@@ -1,0 +1,12 @@
+{
+  "name": "yingxue-ziru",
+  "version": "0.1.0",
+  "private": true,
+  "description": "英学自如：带 RSS 自动聚合接口的英语学习网站原型",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
