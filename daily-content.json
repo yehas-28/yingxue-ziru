@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-07-29T07:51:37.030Z",
+  "reading": {
+    "source": "NPR Business",
+    "title": "Yes, it's possible to save money while paying off credit card debt. Here's how",
+    "summary": "In fact, experts recommend it because it can keep you off the hamster wheel of debt. Here's how to find the money in your budget to put toward savings and credit card payments.",
+    "link": "https://www.npr.org/2026/07/28/nx-s1-5866642/yes-its-possible-to-save-money-while-paying-off-credit-card-debt-heres-how",
+    "pubDate": "Tue, 28 Jul 2026 05:02:00 -0400",
+    "keywords": [
+      "money",
+      "credit",
+      "card",
+      "debt",
+      "here",
+      "possible",
+      "save",
+      "while"
+    ]
+  },
+  "news": {
+    "source": "NPR World",
+    "title": "Photos: Spain and France battle record wildfires",
+    "summary": "Hundreds of thousands of people have been forced from their homes as powerful wildfires sweep across Spain and France, revealing the growing scale of a climate crisis already reshaping the continent.",
+    "link": "https://www.npr.org/2026/07/28/g-s1-135880/photos-spain-france-wildfires-climate-change",
+    "pubDate": "Tue, 28 Jul 2026 11:24:07 -0400",
+    "keywords": [
+      "spain",
+      "france",
+      "wildfires",
+      "photos",
+      "battle",
+      "record",
+      "hundreds",
+      "thousands"
+    ],
+    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+  },
+  "sources": {
+    "reading": [
+      "BBC Technology",
+      "NPR Business",
+      "NASA News"
+    ],
+    "news": [
+      "BBC World",
+      "NPR World",
+      "The Guardian World"
+    ]
+  }
+}

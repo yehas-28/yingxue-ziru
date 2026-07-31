@@ -1,4 +1,4 @@
-# 英学自如
+# YIZU
 
 这是一个英语学习网站原型，包含每日金句、每日单词、每日阅读、每日新闻、场景演练和学习复盘。
 
@@ -48,19 +48,27 @@ Start Command: npm start
 Node Version: 20
 ```
 
-## 自动聚合接口
+## GitHub Pages 自动更新内容
 
-网站会调用：
+当前版本适配 GitHub Pages：网页会读取静态文件：
 
 ```text
-/api/daily-content
+data/daily-content.json
 ```
 
-该接口会从公开 RSS 源聚合内容，并返回：
+GitHub Actions 会每天自动运行：
+
+```text
+scripts/update-daily-content.js
+```
+
+该脚本会从公开 RSS 源聚合内容，生成并提交 `data/daily-content.json`，包含：
 
 - `reading`：每日阅读
 - `news`：每日新闻
 - `sources`：当前聚合源列表
+
+也可以在 GitHub 仓库的 `Actions` 页面手动运行 `Update daily English content`。
 
 ## 当前接入源
 
@@ -78,7 +86,7 @@ Node Version: 20
 
 ## 后续接入更多平台
 
-可以在 `server.js` 中修改：
+可以在 `scripts/update-daily-content.js` 中修改：
 
 - `readingFeeds`
 - `newsFeeds`

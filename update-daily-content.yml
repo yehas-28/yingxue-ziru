@@ -1,0 +1,30 @@
+name: Update daily English content
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 22 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate daily content
+        run: node scripts/update-daily-content.js
+
+      - name: Commit updated content
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 自动更新每日阅读和新闻
+          file_pattern: data/daily-content.json
