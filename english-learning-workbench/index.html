@@ -1,0 +1,4077 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>YIZU</title>
+  <meta name="theme-color" content="#d86f23">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="icon" href="assets/app-icon-new.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="assets/app-icon-new.jpg">
+  <style>
+    :root {
+      --bg: #fff6ea;
+      --bg-card: #ffffff;
+      --bg-soft: #fff0dc;
+      --ink: #2b1d16;
+      --muted: #6f5b4d;
+      --rule: rgba(128, 75, 35, 0.12);
+      --accent: #d86f23;
+      --accent2: #2d8c63;
+      --accent3: #f4b23b;
+      --accent-soft: rgba(216, 111, 35, 0.12);
+      --accent2-soft: rgba(45, 140, 99, 0.12);
+      --accent3-soft: rgba(244, 178, 59, 0.16);
+      --shadow: rgba(128, 75, 35, 0.1);
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-mono: "SF Mono", Consolas, monospace;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --tab-height: 72px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+      padding-bottom: calc(var(--tab-height) + var(--safe-bottom) + 12px);
+    }
+
+    /* ========== Utility ========== */
+    .hidden { display: none !important; }
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-2 { gap: 8px; }
+    .gap-3 { gap: 12px; }
+    .gap-4 { gap: 16px; }
+    .text-center { text-align: center; }
+    .text-xs { font-size: 12px; }
+    .text-sm { font-size: 14px; }
+    .text-lg { font-size: 18px; }
+    .text-xl { font-size: 22px; }
+    .font-bold { font-weight: 700; }
+    .text-muted { color: var(--muted); }
+    .text-accent { color: var(--accent); }
+    .w-full { width: 100%; }
+    .mt-2 { margin-top: 8px; }
+    .mt-3 { margin-top: 12px; }
+    .mt-4 { margin-top: 16px; }
+    .mb-2 { margin-bottom: 8px; }
+    .mb-3 { margin-bottom: 12px; }
+    .mb-4 { margin-bottom: 16px; }
+    .p-3 { padding: 12px; }
+    .p-4 { padding: 16px; }
+    .rounded-xl { border-radius: 16px; }
+    .rounded-2xl { border-radius: 20px; }
+    .rounded-full { border-radius: 999px; }
+
+    /* ========== Header ========== */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(180deg, var(--bg) 0%, rgba(255,246,234,0.95) 100%);
+      backdrop-filter: blur(10px);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .combo-logo {
+      width: 72px;
+      height: 66px;
+      flex-shrink: 0;
+      object-fit: contain;
+      filter: none;
+    }
+
+    .header-date {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .refresh-btn {
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+
+    .refresh-btn:active { transform: scale(0.92); }
+
+    /* ========== Welcome Splash / Home Hero ========== */
+    .welcome-splash {
+      display: none !important;
+    }
+
+    .welcome-splash.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .welcome-card {
+      width: min(340px, 92vw);
+      padding: 24px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 24px 80px rgba(128, 75, 35, 0.22);
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .welcome-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--accent);
+      margin-top: 14px;
+    }
+
+    .welcome-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .home-hero {
+      margin: 14px 16px 4px;
+      padding: 14px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.95) 0%, rgba(255,240,220,.92) 56%, rgba(232,247,239,.92) 100%);
+      border: 1px solid var(--rule);
+      box-shadow: 0 8px 28px var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .home-hero-image {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      height: 150px;
+    }
+
+    .home-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      border-radius: 16px;
+    }
+
+    .home-hero > * { position: relative; z-index: 1; }
+
+    .home-hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .home-greeting {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .daily-action-pill,
+    .weather-pill,
+    .vocab-type-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      color: var(--muted);
+    }
+
+    .weather-pill {
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.76);
+      color: var(--ink);
+    }
+
+    .character-stage {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 10px;
+      min-height: 154px;
+      margin: 10px 0 4px;
+    }
+
+    .character {
+      position: relative;
+      width: 116px;
+      height: 148px;
+      transform-origin: bottom center;
+      animation: characterWave 2.8s ease-in-out infinite;
+    }
+
+    .character.judy { animation-delay: .35s; }
+    .welcome-splash .character { animation-duration: 1.9s; }
+
+    @keyframes characterWave {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-5px) rotate(1deg); }
+    }
+
+    .tab-duo-banner {
+      margin: 12px 16px 4px;
+      padding: 14px 184px 14px 16px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,246,234,.96), rgba(232,247,239,.92));
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 150px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tab-duo-banner::after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 174px;
+      height: 174px;
+      background: var(--banner-role) center center / contain no-repeat;
+      filter: drop-shadow(0 8px 12px rgba(128,75,35,.12));
+      pointer-events: none;
+    }
+
+    #tab-learn .tab-duo-banner { --banner-role: url("assets/icons/banner_learn.png"); }
+    #tab-vocab .tab-duo-banner { --banner-role: url("assets/icons/banner_vocab.png"); }
+    #tab-data .tab-duo-banner { --banner-role: url("assets/icons/banner_data.png"); }
+    #tab-profile .tab-duo-banner { --banner-role: url("assets/icons/banner_profile.png"); }
+
+    .tab-duo-copy strong {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+
+    .tab-duo-copy span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .mini-duo-svg {
+      display: none;
+    }
+
+    .char-ear {
+      position: absolute;
+      top: 0;
+      width: 28px;
+      height: 58px;
+      border-radius: 50% 50% 42% 42%;
+      background: var(--accent);
+      transform-origin: bottom center;
+    }
+
+    .nick .char-ear.left { left: 21px; transform: rotate(-28deg); }
+    .nick .char-ear.right { right: 21px; transform: rotate(28deg); }
+    .judy .char-ear {
+      width: 22px;
+      height: 82px;
+      background: #c7cdd7;
+      border: 4px solid #9aa3b0;
+    }
+    .judy .char-ear::after {
+      content: "";
+      position: absolute;
+      inset: 10px 5px;
+      border-radius: inherit;
+      background: #ffd4df;
+    }
+    .judy .char-ear.left { left: 26px; transform: rotate(-10deg); }
+    .judy .char-ear.right { right: 26px; transform: rotate(10deg); }
+
+    .char-head {
+      position: absolute;
+      top: 35px;
+      left: 25px;
+      width: 66px;
+      height: 58px;
+      border-radius: 48% 48% 44% 44%;
+      background: var(--accent);
+      z-index: 2;
+    }
+
+    .judy .char-head { background: #c7cdd7; }
+
+    .char-face {
+      position: absolute;
+      left: 13px;
+      top: 23px;
+      width: 40px;
+      height: 28px;
+      border-radius: 50%;
+      background: #fff4df;
+    }
+
+    .judy .char-face { background: #f7f8fb; }
+
+    .char-eye {
+      position: absolute;
+      top: 31px;
+      width: 4px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ink);
+      z-index: 3;
+    }
+
+    .char-eye.left { left: 43px; }
+    .char-eye.right { right: 43px; }
+
+    .char-smile {
+      position: absolute;
+      left: 49px;
+      top: 48px;
+      width: 18px;
+      height: 8px;
+      border-bottom: 2px solid var(--ink);
+      border-radius: 50%;
+      z-index: 3;
+    }
+
+    .char-body {
+      position: absolute;
+      left: 32px;
+      bottom: 20px;
+      width: 52px;
+      height: 60px;
+      border-radius: 24px 24px 16px 16px;
+      background: var(--accent2);
+      z-index: 1;
+    }
+
+    .judy .char-body { background: #3f6fa8; }
+
+    .char-arm,
+    .char-leg {
+      position: absolute;
+      background: var(--accent);
+      border-radius: 999px;
+      z-index: 0;
+    }
+
+    .judy .char-arm,
+    .judy .char-leg { background: #9aa3b0; }
+
+    .char-arm {
+      top: 83px;
+      width: 16px;
+      height: 48px;
+    }
+
+    .char-arm.left { left: 20px; transform: rotate(28deg); }
+    .char-arm.right { right: 20px; transform: rotate(-44deg); transform-origin: top center; animation: waveArm 1.5s ease-in-out infinite; }
+
+    @keyframes waveArm {
+      0%, 100% { transform: rotate(-44deg); }
+      50% { transform: rotate(-72deg); }
+    }
+
+    .char-leg {
+      bottom: 0;
+      width: 15px;
+      height: 34px;
+    }
+
+    .char-leg.left { left: 40px; transform: rotate(8deg); }
+    .char-leg.right { right: 40px; transform: rotate(-8deg); }
+
+    .daily-quote-card {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--rule);
+    }
+
+    .daily-quote-en {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+
+    .daily-quote-zh {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ========== Date Selector ========== */
+    .date-selector {
+      display: none;
+      position: fixed;
+      top: 78px;
+      left: 16px;
+      right: 16px;
+      z-index: 1200;
+      padding: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      border-radius: 22px;
+      box-shadow: 0 18px 50px rgba(128,75,35,.18);
+    }
+
+    .date-selector.expanded {
+      display: block;
+    }
+
+    .date-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 2px 4px 8px;
+    }
+
+    .date-current {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .date-current-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .date-current-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .date-toggle-icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s;
+      color: var(--accent);
+    }
+
+    .date-selector.expanded .date-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .date-tabs {
+      display: none;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      overflow: visible;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      margin-top: 10px;
+    }
+
+    .date-selector.expanded .date-tabs {
+      display: grid;
+    }
+
+    .date-tabs::-webkit-scrollbar { display: none; }
+
+    .date-tab {
+      min-width: 0;
+      padding: 8px 4px;
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      background: var(--bg-soft);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .date-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .date-tab .day-name {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .date-tab .day-num {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .date-tab.out-month {
+      opacity: .38;
+    }
+
+    /* ========== Cards ========== */
+    .card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      border: 1px solid var(--rule);
+      box-shadow: 0 4px 20px var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 16px 16px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .card-body {
+      padding: 12px 16px 16px;
+    }
+
+    /* ========== Dashboard Stats ========== */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 12px 16px 8px;
+    }
+
+    .stat-circle {
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 8px;
+      background: rgba(255,255,255,.92);
+      border-radius: 18px;
+      border: 1px solid var(--rule);
+      box-shadow: 0 6px 20px rgba(128,75,35,.07);
+    }
+
+    .stat-icon {
+      width: 118px;
+      height: 92px;
+      margin-bottom: 8px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 6px rgba(128,75,35,.1));
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ========== Progress Ring ========== */
+    .progress-section {
+      padding: 8px 16px 12px;
+    }
+
+    .progress-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,240,220,.85));
+    }
+
+    .progress-ring {
+      position: relative;
+      width: 108px;
+      height: 108px;
+      flex-shrink: 0;
+    }
+
+    .progress-ring-bg {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(var(--accent) var(--progress, 0%), var(--bg-soft) var(--progress, 0%));
+      mask: radial-gradient(transparent 55%, black 56%);
+      -webkit-mask: radial-gradient(transparent 55%, black 56%);
+    }
+
+    .progress-ring-inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .progress-percent {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .progress-label {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .progress-info {
+      flex: 1;
+    }
+
+    .progress-info-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .progress-info-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .progress-dot.completed { background: var(--accent2); }
+    .progress-dot.pending { background: var(--rule); }
+
+    /* ========== Quick Links ========== */
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 8px 16px 16px;
+    }
+
+    .quick-link {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 12px;
+      background: rgba(255,255,255,.94);
+      border-radius: 18px;
+      border: 1px solid var(--rule);
+      cursor: pointer;
+      transition: all 0.2s;
+      min-height: 76px;
+      box-shadow: 0 6px 20px rgba(128,75,35,.06);
+    }
+
+    .quick-link:active {
+      transform: scale(0.96);
+      background: var(--accent-soft);
+    }
+
+    .quick-link-icon {
+      width: 100px;
+      height: 92px;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: visible;
+      background-position: center 35% !important;
+      background-size: contain !important;
+      background-repeat: no-repeat !important;
+      filter: drop-shadow(0 4px 6px rgba(128,75,35,.12));
+    }
+
+    .quick-link-icon.words { background-image: url("assets/icons/nick_stand.png"); }
+    .quick-link-icon.reading { background-image: url("assets/icons/nick_cool.png"); }
+    .quick-link-icon.news { background-image: url("assets/icons/nick_sly.png"); }
+    .quick-link-icon.practice { background-image: url("assets/icons/nick_run.png"); }
+
+    .quick-combo {
+      display: none;
+    }
+
+    .quick-combo::before,
+    .quick-combo::after {
+      content: none;
+      position: absolute;
+      bottom: 5px;
+      width: 12px;
+      height: 18px;
+      border-radius: 7px 7px 4px 4px;
+      opacity: .9;
+    }
+
+    .quick-combo::before {
+      left: 7px;
+      background: var(--accent);
+      transform: rotate(-10deg);
+    }
+
+    .quick-combo::after {
+      right: 7px;
+      background: #9aa3b0;
+      transform: rotate(10deg);
+    }
+
+    .quick-link-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* ========== Tab Content ========== */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== Section Cards ========== */
+    .section-card {
+      margin: 12px 16px;
+      border-radius: 22px;
+      box-shadow: 0 8px 24px rgba(128,75,35,.07);
+      overflow: visible;
+    }
+
+    /* Learn Mode Switcher */
+    .learn-switcher {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .learn-switcher::-webkit-scrollbar { display: none; }
+
+    .learn-mode-btn {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1.5px solid var(--rule);
+      border-radius: 16px;
+      background: var(--bg-card);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      min-width: 72px;
+    }
+
+    .learn-mode-btn::before {
+      content: "";
+      width: 62px;
+      height: 58px;
+      border-radius: 0;
+      background: var(--mode-role) center / 190% auto no-repeat;
+      filter: drop-shadow(0 5px 7px rgba(128,75,35,.12));
+    }
+
+    .learn-mode-btn[data-mode="words"] { --mode-role: url("assets/icons/nick_stand.png"); }
+    .learn-mode-btn[data-mode="reading"] { --mode-role: url("assets/icons/nick_cool.png"); }
+    .learn-mode-btn[data-mode="news"] { --mode-role: url("assets/icons/nick_sly.png"); }
+    .learn-mode-btn[data-mode="practice"] { --mode-role: url("assets/icons/nick_run.png"); }
+    .learn-mode-btn[data-mode="translate"] { --mode-role: url("assets/icons/translate_nick_selfie.png"); }
+
+    .learn-mode-btn[data-mode="translate"]::before {
+      border-radius: 16px;
+      background-size: cover;
+    }
+
+    .learn-mode-btn.active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .learn-mode-icon {
+      display: none;
+    }
+
+    .section-header {
+      position: relative;
+      min-height: 178px;
+      padding-right: 230px;
+      padding-left: 24px;
+      border-radius: 20px 20px 0 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,240,220,.5));
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .learn-panel .section-header::after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      top: 0;
+      width: 240px;
+      height: 178px;
+      background: center center / contain no-repeat;
+      filter: drop-shadow(0 6px 8px rgba(128,75,35,.12));
+    }
+
+    #section-words .section-header::after { background-image: url("assets/icons/learn_panel_words_new.png"); right: -30px; }
+    #section-reading .section-header::after { background-image: url("assets/icons/learn_panel_reading_new.png"); right: -30px; }
+    #section-news .section-header::after { background-image: url("assets/icons/learn_panel_news_new.png"); right: -30px; }
+    #section-practice .section-header::after { background-image: url("assets/icons/crop_practice.png"); }
+    #section-translate .section-header::after { background-image: url("assets/icons/learn_panel_translate_new.png"); right: -30px; }
+
+    .learn-panel {
+      display: none;
+    }
+
+    .learn-panel.active {
+      display: block;
+    }
+
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .section-icon-img {
+      width: 84px;
+      height: 84px;
+      object-fit: contain;
+      object-position: center;
+      flex-shrink: 0;
+      filter: drop-shadow(0 3px 5px rgba(128,75,35,.1));
+    }
+
+    #section-translate .section-icon-img {
+      width: 56px;
+      height: 56px;
+      filter: drop-shadow(0 3px 5px rgba(128,75,35,.1));
+    }
+
+    .section-title-group {
+      flex: 1;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ========== Word Cards ========== */
+    .word-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .word-card {
+      padding: 14px;
+      background: var(--bg-soft);
+      border-radius: 14px;
+      border: 1px solid var(--rule);
+    }
+
+    .word-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .word-card span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .word-card-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .word-btn {
+      flex: 1;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .word-btn.speak {
+      background: var(--accent);
+      color: white;
+    }
+
+    .word-btn.add {
+      background: var(--bg-card);
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+
+    .word-btn:active { transform: scale(0.95); }
+
+    /* ========== Reading / News ========== */
+    .article-box {
+      padding: 16px;
+      background: var(--bg-soft);
+      border-radius: 16px;
+      margin-bottom: 12px;
+    }
+
+    .article-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .article-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    .word-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      margin: 0 2px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+
+    .meaning-pop {
+      margin-top: 12px;
+      padding: 12px;
+      background: var(--bg-card);
+      border-radius: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      border-left: 3px solid var(--accent);
+    }
+
+    /* ========== Audio Player ========== */
+    .audio-player {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--bg-soft);
+      border-radius: 16px;
+      margin-bottom: 12px;
+    }
+
+    .play-btn {
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .play-btn:active { transform: scale(0.92); }
+
+    .audio-track {
+      flex: 1;
+      height: 6px;
+      background: var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .audio-progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent3));
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+
+    .audio-time {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    .subtitle-box {
+      padding: 14px;
+      background: var(--accent2-soft);
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ========== Scenario Practice ========== */
+    .scenario-select {
+      margin-bottom: 12px;
+    }
+
+    .scenario-select label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    select, textarea, input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      background: var(--bg-card);
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+    }
+
+    select:focus, textarea:focus, input:focus {
+      border-color: var(--accent);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .chat-bubbles {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .bubble {
+      max-width: 85%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .bubble.teacher {
+      align-self: flex-start;
+      background: var(--bg-soft);
+      border-bottom-left-radius: 4px;
+    }
+
+    .bubble.learner {
+      align-self: flex-end;
+      background: var(--accent);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .bubble .bubble-feedback {
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255,255,255,0.25);
+      font-size: 12px;
+      opacity: .9;
+    }
+    .bubble.teacher .bubble-feedback { border-top-color: var(--rule); opacity: .75; }
+
+    /* ========== Voice Practice ========== */
+    .voice-chat-wrap {
+      border-radius: 18px;
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .voice-chat-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.6);
+      border-bottom: 1px solid var(--rule);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .voice-chat-header .ai-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent2);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:.4;} 50%{opacity:1;} }
+    .chat-bubbles.voice {
+      max-height: 340px;
+      overflow-y: auto;
+      padding: 14px;
+      margin: 0;
+      scroll-behavior: smooth;
+    }
+    .translation-pop {
+      margin: 4px 0 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(244,178,59,0.12);
+      border: 1px dashed var(--accent3);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .translation-pop .trans-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent3);
+      margin-bottom: 4px;
+    }
+    .translation-pop .trans-en { color: var(--accent); font-weight: 600; }
+    .translation-pop .trans-pinyin { color: var(--muted); font-size: 12px; }
+    .voice-input-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.6);
+      border-top: 1px solid var(--rule);
+    }
+    .mic-btn {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      box-shadow: 0 4px 14px rgba(216,111,35,.3);
+    }
+    .mic-btn.recording {
+      background: #e74c3c;
+      animation: micPulse 1s ease-in-out infinite;
+    }
+    @keyframes micPulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(231,76,60,.4); }
+      50% { box-shadow: 0 0 0 10px rgba(231,76,60,0); }
+    }
+    .mic-btn:disabled { opacity: .4; cursor: not-allowed; }
+    .voice-status {
+      flex: 1;
+      font-size: 13px;
+      color: var(--muted);
+      min-height: 20px;
+    }
+    .voice-status.listening { color: #e74c3c; font-weight: 600; }
+    .text-fallback {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      background: var(--bg-card);
+      font-size: 14px;
+      outline: none;
+      min-height: 42px;
+    }
+    .voice-send-btn {
+      flex-shrink: 0;
+      height: 42px;
+      padding: 0 12px;
+      border: none;
+      border-radius: 12px;
+      background: var(--accent2);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .translate-tool {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .translate-tip {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(45,140,99,.08);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .translation-result-card {
+      padding: 14px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,246,234,.96), rgba(232,247,239,.82));
+      border: 1px solid var(--rule);
+    }
+
+    .translation-result-card.empty {
+      color: var(--muted);
+      text-align: center;
+      background: var(--bg-soft);
+    }
+
+    .translation-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .translation-en {
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .translation-zh {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .voice-translate-panel {
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .voice-translate-main {
+      flex: 1;
+      min-width: 0;
+    }
+    .practice-score-card {
+      margin: 14px 0;
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--accent-soft), var(--accent3-soft));
+      border: 1px solid var(--rule);
+    }
+    .score-total {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .score-ring-big {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+    .score-dims {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .score-dim {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .score-dim-bar {
+      flex: 1;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--bg-soft);
+      overflow: hidden;
+    }
+    .score-dim-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width .6s ease;
+    }
+    .practice-history-list {
+      margin-top: 14px;
+    }
+    .practice-history-item {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: border-color .2s;
+    }
+    .practice-history-item:hover { border-color: var(--accent); }
+    .practice-history-item .phi-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .practice-history-item .phi-name { font-size: 14px; font-weight: 600; }
+    .practice-history-item .phi-score {
+      font-size: 13px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .practice-history-item .phi-date { font-size: 11px; color: var(--muted); }
+    .practice-history-detail {
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 10px;
+      background: var(--bg-soft);
+      font-size: 12px;
+      line-height: 1.6;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    /* ========== Vocab Table ========== */
+    .vocab-table-wrap {
+      overflow-x: auto;
+      margin: 0 -16px;
+      padding: 0 16px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 13px;
+      table-layout: fixed;
+    }
+
+    th, td {
+      padding: 10px 6px;
+      text-align: left;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: middle;
+    }
+
+    th {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--bg-soft);
+    }
+
+    th:first-child { border-radius: 10px 0 0 10px; }
+    th:last-child { border-radius: 0 10px 10px 0; }
+
+    td { color: var(--ink); }
+    tr:last-child td { border-bottom: none; }
+
+    table th:nth-child(1),
+    table td:nth-child(1) { width: 18%; }
+    table th:nth-child(2),
+    table td:nth-child(2) { width: 14%; }
+    table th:nth-child(3),
+    table td:nth-child(3) { width: 32%; }
+    table th:nth-child(4),
+    table td:nth-child(4) { width: 26%; }
+    table th:nth-child(5),
+    table td:nth-child(5) { width: 10%; text-align: center; }
+
+    .word-btn.speak {
+      background: var(--accent);
+      color: white;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex: none;
+    }
+
+    .word-btn.speak svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .word-btn.speak:active { transform: scale(0.9); }
+
+    code {
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .vocab-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 12px;
+    }
+
+    .vocab-tag {
+      padding: 6px 12px;
+      background: var(--bg-soft);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--rule);
+    }
+
+    .vocab-filter-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 0 16px 12px;
+      scrollbar-width: none;
+    }
+
+    .vocab-filter-row::-webkit-scrollbar { display: none; }
+
+    .vocab-filter {
+      flex-shrink: 0;
+      padding: 7px 14px 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      background: var(--bg-card);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .vocab-filter-icon {
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 14px;
+      filter: drop-shadow(0 2px 3px rgba(128,75,35,.1));
+    }
+
+    .vocab-filter.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ========== Data Tab ========== */
+    .data-tabs {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+    }
+
+    .data-tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .data-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .analysis-card {
+      margin: 0 16px 16px;
+      padding: 18px 18px 18px 96px;
+      min-height: 94px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--accent-soft), var(--bg-card));
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(128,75,35,.07);
+    }
+
+    .analysis-card::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      bottom: 6px;
+      width: 68px;
+      height: 72px;
+      background: url("assets/icons/data.png") center bottom / contain no-repeat;
+    }
+
+    .analysis-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .analysis-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .section-review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 0 16px 16px;
+    }
+
+    .section-review-card {
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      box-shadow: 0 6px 18px rgba(128,75,35,.06);
+    }
+
+    .section-review-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-review-nick {
+      width: 58px;
+      height: 66px;
+      object-fit: contain;
+      flex-shrink: 0;
+      vertical-align: middle;
+      filter: drop-shadow(0 3px 5px rgba(128,75,35,.1));
+    }
+
+    .section-review-count {
+      color: var(--accent);
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .section-review-text {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .review-dimensions {
+      display: grid;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .review-dimension {
+      display: grid;
+      grid-template-columns: 78px 1fr 36px;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .dimension-bar {
+      height: 7px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      overflow: hidden;
+    }
+
+    .dimension-bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent3));
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 0 16px 16px;
+    }
+
+    .stat-box {
+      padding: 16px;
+      background: var(--bg-card);
+      border-radius: 18px;
+      border: 1px solid var(--rule);
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(128,75,35,.06);
+    }
+
+    .stat-box-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .stat-box-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Heatmap */
+    .heatmap-card {
+      margin: 0 16px 16px;
+    }
+
+    .heatmap {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      padding: 12px;
+    }
+
+    .heatmap-day {
+      aspect-ratio: 1;
+      border-radius: 6px;
+      background: var(--bg-soft);
+    }
+
+    .heatmap-day.level-1 { background: var(--accent-soft); }
+    .heatmap-day.level-2 { background: rgba(216, 111, 35, 0.4); }
+    .heatmap-day.level-3 { background: rgba(216, 111, 35, 0.6); }
+    .heatmap-day.level-4 { background: var(--accent); }
+
+    .heatmap-legend {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      padding: 8px 12px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .heatmap-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+    }
+
+    /* ========== Profile Tab ========== */
+    .profile-header {
+      margin: 12px 16px;
+      padding: 24px 16px;
+      text-align: center;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #fff, #fff0dc);
+      border: 1px solid var(--rule);
+      box-shadow: 0 8px 24px rgba(128,75,35,.07);
+    }
+
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .profile-avatar.judy-avatar {
+      width: 140px;
+      height: 140px;
+      background: #fff url("assets/icons/judy_hat_avatar.png") center / contain no-repeat;
+      border: 4px solid #fff;
+      box-shadow: 0 12px 32px var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-avatar.judy-avatar::before,
+    .profile-avatar.judy-avatar::after {
+      content: none;
+      position: absolute;
+      top: -30px;
+      width: 23px;
+      height: 66px;
+      border-radius: 999px;
+      background: #c7cdd7;
+      border: 4px solid #9aa3b0;
+      z-index: -1;
+    }
+
+    .profile-avatar.judy-avatar::before {
+      left: 24px;
+      transform: rotate(-12deg);
+    }
+
+    .profile-avatar.judy-avatar::after {
+      right: 24px;
+      transform: rotate(12deg);
+    }
+
+    .profile-card {
+      margin: 12px 16px 16px;
+      padding: 16px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #fff, #eef6ff);
+      border: 1px solid var(--rule);
+      box-shadow: 0 8px 24px var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .profile-card-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e8eef7 url("assets/icons/judy_hat_avatar.png") center / contain no-repeat;
+      font-size: 28px;
+    }
+
+    .profile-card-name {
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .profile-card-nick {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .profile-name {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .profile-version {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .settings-list {
+      margin: 0 16px;
+    }
+
+    .setting-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .setting-item:first-child {
+      border-radius: 16px 16px 0 0;
+    }
+
+    .setting-item:last-child {
+      border-radius: 0 0 16px 16px;
+      border-bottom: none;
+    }
+
+    .setting-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+    }
+
+    .setting-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      overflow: hidden;
+    }
+
+    .setting-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      display: block;
+    }
+
+    .setting-action {
+      padding: 8px 16px;
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      background: var(--bg-card);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .setting-action.danger {
+      color: #dc2626;
+      border-color: #fecaca;
+      background: #fef2f2;
+    }
+
+    .setting-action:active { transform: scale(0.96); }
+
+    .about-section {
+      padding: 24px 16px;
+      text-align: center;
+    }
+
+    .about-logo {
+      width: 148px;
+      height: 148px;
+      margin: 0 auto 12px;
+      background: url("assets/icons/zootopia_duo_user.png") center / contain no-repeat;
+    }
+
+    .about-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ========== Buttons ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: var(--bg-soft);
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+
+    .btn:active { transform: scale(0.96); }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ========== Status Line ========== */
+    .status-line {
+      padding: 12px 16px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ========== Bottom Tab Bar ========== */
+    .tab-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: calc(var(--tab-height) + var(--safe-bottom));
+      padding-bottom: var(--safe-bottom);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--rule);
+      display: flex;
+      z-index: 1000;
+    }
+
+    .tab-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 8px 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .tab-item.active {
+      color: var(--accent);
+    }
+
+    .tab-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .tab-fox-icon {
+      display: none;
+    }
+
+    .tab-item::before {
+      content: "";
+      width: 48px;
+      height: 42px;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      background-image: var(--tab-role);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: none;
+      filter: drop-shadow(0 5px 7px rgba(128,75,35,.12));
+    }
+
+    .tab-item[data-tab="home"] { --tab-role: url("assets/icons/crop_home.png"); }
+    .tab-item[data-tab="learn"] { --tab-role: url("assets/icons/crop_judy_wave.png"); }
+    .tab-item[data-tab="vocab"] { --tab-role: url("assets/icons/crop_judy_read.png"); }
+    .tab-item[data-tab="data"] { --tab-role: url("assets/icons/crop_judy_cup.png"); }
+    .tab-item[data-tab="profile"] { --tab-role: url("assets/icons/crop_judy_profile.png"); }
+
+    .tab-item.active::before {
+      box-shadow: none;
+      transform: translateY(-2px);
+    }
+
+    .tab-label {
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ========== Empty State ========== */
+    .empty-state {
+      padding: 48px 16px;
+      text-align: center;
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      opacity: 0.5;
+    }
+
+    .empty-text {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ========== Responsive ========== */
+    @media (min-width: 768px) {
+      body {
+        max-width: 480px;
+        margin: 0 auto;
+        box-shadow: 0 0 40px var(--shadow);
+      }
+      
+      .tab-bar {
+        max-width: 480px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-content">
+      <div class="logo">
+        <img class="combo-logo" src="assets/app-icon-new.jpg" alt="YIZU 图标">
+        <span class="logo-text">YIZU</span>
+      </div>
+      <span class="header-date" id="currentDate"></span>
+      <button class="refresh-btn" id="refreshBtn" title="刷新">&#8635;</button>
+    </div>
+  </header>
+
+  <!-- Date Selector -->
+  <div class="date-selector" id="dateSelector">
+    <div class="date-header" id="dateHeader">
+      <div class="date-current">
+        <span class="date-current-text" id="dateCurrentText"></span>
+        <span class="date-current-sub" id="dateCurrentSub"></span>
+      </div>
+      <svg class="date-toggle-icon" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="date-tabs" id="dateTabs"></div>
+  </div>
+
+  <!-- ========== Tab 1: Home (Dashboard) ========== -->
+  <div class="tab-content active" id="tab-home">
+    <div class="home-hero">
+      <div class="home-hero-top">
+        <span class="vocab-type-pill">今日学习</span>
+        <div class="weather-pill" id="weatherPill">定位天气中...</div>
+      </div>
+      <div class="home-hero-image">
+        <img src="assets/icons/group_characters.png" alt="疯狂动物城角色群像">
+      </div>
+      <div class="daily-quote-card">
+        <div class="flex justify-between items-center gap-3">
+          <span class="vocab-type-pill">每日金句</span>
+          <button class="word-btn add" id="addQuoteToVocab">加入词库</button>
+        </div>
+        <div class="daily-quote-en" id="dailyQuoteEn">Small steps every day lead to big changes.</div>
+        <div class="daily-quote-zh" id="dailyQuoteZh">每天的小步前进，会带来巨大的改变。</div>
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-row">
+      <div class="stat-circle">
+        <img class="stat-icon" src="assets/icons/crop_judy_wave.png" alt="朱迪">
+        <span class="stat-value" id="vocabCount">0</span>
+        <span class="stat-label">词库内容</span>
+      </div>
+      <div class="stat-circle">
+        <img class="stat-icon" src="assets/icons/crop_judy_read.png" alt="朱迪">
+        <span class="stat-value" id="pendingCount">0</span>
+        <span class="stat-label">待复习</span>
+      </div>
+      <div class="stat-circle">
+        <img class="stat-icon" src="assets/icons/crop_judy_cup.png" alt="朱迪">
+        <span class="stat-value" id="todayCompleted">0</span>
+        <span class="stat-label">今日完成</span>
+      </div>
+    </div>
+
+    <!-- Progress Ring -->
+    <div class="progress-section">
+      <div class="card">
+        <div class="progress-card">
+          <div class="progress-ring">
+            <div class="progress-ring-bg" id="progressRing"></div>
+            <div class="progress-ring-inner">
+              <div class="progress-percent" id="progressPercent">0%</div>
+              <div class="progress-label">完成</div>
+            </div>
+          </div>
+          <div class="progress-info">
+            <div class="progress-info-title">今日学习进度</div>
+            <div class="progress-info-item">
+              <span class="progress-dot completed" id="dotWords"></span>
+              <span>每日单词</span>
+            </div>
+            <div class="progress-info-item">
+              <span class="progress-dot completed" id="dotReading"></span>
+              <span>每日阅读</span>
+            </div>
+            <div class="progress-info-item">
+              <span class="progress-dot completed" id="dotNews"></span>
+              <span>每日新闻</span>
+            </div>
+            <div class="progress-info-item">
+              <span class="progress-dot completed" id="dotPractice"></span>
+              <span>场景演练</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="quick-links">
+      <div class="quick-link" data-tab="learn" data-section="words">
+        <div class="quick-link-icon words"><span class="quick-combo">Aa</span></div>
+        <span class="quick-link-text">每日单词</span>
+      </div>
+      <div class="quick-link" data-tab="learn" data-section="reading">
+        <div class="quick-link-icon reading"><span class="quick-combo">&#128218;</span></div>
+        <span class="quick-link-text">每日阅读</span>
+      </div>
+      <div class="quick-link" data-tab="learn" data-section="news">
+        <div class="quick-link-icon news"><span class="quick-combo">&#128250;</span></div>
+        <span class="quick-link-text">每日新闻</span>
+      </div>
+      <div class="quick-link" data-tab="learn" data-section="practice">
+        <div class="quick-link-icon practice"><span class="quick-combo">&#128172;</span></div>
+        <span class="quick-link-text">场景演练</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Tab 2: Learn ========== -->
+  <div class="tab-content" id="tab-learn">
+    <div class="tab-duo-banner">
+      <div class="tab-duo-copy"><strong>尼克带路，朱迪打卡</strong><span>选择一个学习模式开始今天的练习</span></div>
+      <svg class="mini-duo-svg" viewBox="0 0 160 110"><path d="M28 18l8-12 9 11 9-11 8 12c12 12 10 35-4 46-15 12-39 12-54 0-14-11-16-34-4-46z" fill="#d86f23" stroke="#2b1d16" stroke-width="4"/><ellipse cx="45" cy="48" rx="22" ry="16" fill="#fff4df"/><circle cx="36" cy="43" r="3"/><circle cx="53" cy="43" r="3"/><path d="M34 70c8-12 18-18 30-18s22 6 30 18v32H34z" fill="#b9d66b" stroke="#2b1d16" stroke-width="4"/><path d="M72 70c16-10 32-2 22 16-8 12-23 7-25-4" fill="#d86f23" stroke="#2b1d16" stroke-width="4"/><path d="M106 12c-8-14-19 0-9 36M132 12c8-14 19 0 9 36" fill="#b8b8b8" stroke="#2b1d16" stroke-width="4"/><path d="M98 48c4-26 43-26 47 0 4 25-9 43-24 43s-27-18-23-43z" fill="#b8b8b8" stroke="#2b1d16" stroke-width="4"/><ellipse cx="121" cy="70" rx="20" ry="14" fill="#f5f0e6"/><circle cx="114" cy="58" r="3" fill="#5b4be8"/><circle cx="128" cy="58" r="3" fill="#5b4be8"/><path d="M101 100c6-14 13-20 21-20s15 6 21 20" fill="#5b8db8" stroke="#2b1d16" stroke-width="4"/></svg>
+    </div>
+    <!-- Learn Mode Switcher -->
+    <div class="learn-switcher">
+      <button class="learn-mode-btn active" data-mode="words">
+        <svg class="learn-mode-icon" viewBox="0 0 48 48"><path d="M12 10l4-7 5 6 5-6 4 7c4 5 3 14-2 19-5 5-14 5-19 0-5-5-6-14-2-19z" fill="var(--accent)" opacity="0.2"/><path d="M12 10l4-7 5 6 5-6 4 7c4 5 3 14-2 19-5 5-14 5-19 0-5-5-6-14-2-19z" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="21" cy="24" rx="1.5" ry="2" fill="var(--ink)"/><ellipse cx="27" cy="24" rx="1.5" ry="2" fill="var(--ink)"/><text x="18" y="31" fill="var(--ink)" font-size="6" font-weight="800">Aa</text></svg>
+        <span>单词</span>
+      </button>
+      <button class="learn-mode-btn" data-mode="reading">
+        <svg class="learn-mode-icon" viewBox="0 0 48 48"><path d="M10 12l5-9 6 7 6-7 5 9c5 6 4 17-3 23-7 6-17 6-24 0-7-6-8-17-3-23z" fill="var(--accent2)" opacity="0.2"/><path d="M10 12l5-9 6 7 6-7 5 9c5 6 4 17-3 23-7 6-17 6-24 0-7-6-8-17-3-23z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 22h12M18 27h12M18 32h8" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>阅读</span>
+      </button>
+      <button class="learn-mode-btn" data-mode="news">
+        <svg class="learn-mode-icon" viewBox="0 0 48 48"><path d="M11 11l4-7 5 6 5-6 4 7c4 5 3 13-2 18-5 5-13 5-18 0-5-5-6-13-2-18z" fill="var(--accent3)" opacity="0.2"/><path d="M11 11l4-7 5 6 5-6 4 7c4 5 3 13-2 18-5 5-13 5-18 0-5-5-6-13-2-18z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 28v-6a4 4 0 018 0v6" fill="none" stroke="var(--ink)" stroke-width="1.5"/><rect x="17" y="28" width="14" height="6" rx="3" fill="var(--ink)" opacity="0.3"/></svg>
+        <span>新闻</span>
+      </button>
+      <button class="learn-mode-btn" data-mode="practice">
+        <svg class="learn-mode-icon" viewBox="0 0 48 48"><path d="M12 11l4-7 5 6 5-6 4 7c4 5 3 13-2 18-5 5-13 5-18 0-5-5-6-13-2-18z" fill="var(--accent)" opacity="0.15"/><path d="M12 11l4-7 5 6 5-6 4 7c4 5 3 13-2 18-5 5-13 5-18 0-5-5-6-13-2-18z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M19 23l-3-3 3-3M29 23l3-3-3-3" stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M22 30c1 1 3 1 4 0" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>演练</span>
+      </button>
+      <button class="learn-mode-btn" data-mode="translate">
+        <span>翻译</span>
+      </button>
+    </div>
+
+    <!-- Words Section -->
+    <div class="section-card card learn-panel active" id="section-words">
+      <div class="section-header">
+        <img class="section-icon-img" src="assets/icons/crop_nick_stand.png" alt="单词">
+        <div class="section-title-group">
+          <div class="section-title">每日单词</div>
+          <div class="section-subtitle">随机 10 词，语音跟读</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="word-grid" id="wordBoard"></div>
+        <div class="btn-row">
+          <button class="btn btn-secondary" id="shuffleWords">换一组</button>
+          <button class="btn btn-primary" data-complete="每日单词">打卡完成</button>
+        </div>
+        <div class="status-line" id="wordsStatus">尚未记录今日单词完成</div>
+      </div>
+    </div>
+
+    <!-- Reading Section -->
+    <div class="section-card card learn-panel" id="section-reading">
+      <div class="section-header">
+        <img class="section-icon-img" src="assets/icons/crop_nick_cool.png" alt="阅读">
+        <div class="section-title-group">
+          <div class="section-title">每日阅读</div>
+          <div class="section-subtitle">点词释义，自动入库</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="article-box">
+          <div class="article-title" id="readingTitle">阅读示例</div>
+          <div class="article-text" id="readingText">
+            Many teams need to <button class="word-chip" data-word="address" data-meaning="address: 处理、解决">address</button> problems early, especially when priorities <button class="word-chip" data-word="shift" data-meaning="shift: 改变、转移">shift</button> quickly.
+          </div>
+          <div class="meaning-pop" id="meaningPop">点击单词查看释义，自动加入词库</div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" data-complete="每日阅读">打卡完成</button>
+        </div>
+        <div class="status-line" id="readingStatus">尚未记录今日阅读完成</div>
+      </div>
+    </div>
+
+    <!-- News Section -->
+    <div class="section-card card learn-panel" id="section-news">
+      <div class="section-header">
+        <img class="section-icon-img" src="assets/icons/crop_nick_sly.png" alt="新闻">
+        <div class="section-title-group">
+          <div class="section-title">每日新闻</div>
+          <div class="section-subtitle">语音播放，中文字幕</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="audio-player">
+          <button class="play-btn" id="playNews">&#9658;</button>
+          <div class="audio-track"><div class="audio-progress" id="audioProgress"></div></div>
+          <span class="audio-time" id="audioTime">01:20</span>
+        </div>
+        <div class="article-box">
+          <div class="article-title" id="newsTitle">Global leaders discuss climate priorities at a regional summit.</div>
+          <div class="subtitle-box" id="newsSubtitle">各国领导人在区域峰会上讨论气候优先事项。</div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" data-complete="每日新闻">打卡完成</button>
+        </div>
+        <div class="status-line" id="newsStatus">尚未记录今日新闻完成</div>
+      </div>
+    </div>
+
+    <!-- Practice Section -->
+    <div class="section-card card learn-panel" id="section-practice">
+      <div class="section-header">
+        <img class="section-icon-img" src="assets/icons/crop_nick_run.png" alt="演练">
+        <div class="section-title-group">
+          <div class="section-title">场景演练</div>
+          <div class="section-subtitle">语音对话，AI 老师实时反馈</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="scenario-select">
+          <label>选择场景</label>
+          <select id="scenario">
+            <option value="meeting">会议中确认需求</option>
+            <option value="deadline">礼貌催促项目进度</option>
+            <option value="restaurant">餐厅点餐和修改订单</option>
+            <option value="customer-service">向客服解释问题</option>
+          </select>
+        </div>
+        <div class="btn-row" id="practiceStartRow">
+          <button class="btn btn-primary" id="startPractice" style="width:100%;">开始语音演练</button>
+        </div>
+        <div class="voice-chat-wrap hidden" id="voiceChatWrap">
+          <div class="voice-chat-header">
+            <span class="ai-dot"></span>
+            <span id="aiTeacherName">AI 老师 · Nick</span>
+            <span style="margin-left:auto;font-size:11px;color:var(--muted);" id="turnCount">第 1 轮</span>
+          </div>
+          <div class="chat-bubbles voice" id="chatBubbles"></div>
+          <div class="voice-input-bar">
+            <button class="mic-btn" id="micBtn" title="按住说话">&#127908;</button>
+            <input class="text-fallback" id="textFallback" placeholder="或在此输入英文…" />
+            <button class="voice-send-btn" id="textSendBtn">发送</button>
+          </div>
+          <div class="voice-status" id="voiceStatus" style="padding:0 14px 10px;">点击麦克风开始说话</div>
+        </div>
+        <div class="btn-row hidden" id="practiceEndRow">
+          <button class="btn btn-secondary" id="cancelPractice">放弃</button>
+          <button class="btn btn-primary" id="endPractice">结束对话并打分</button>
+        </div>
+        <div id="scoreDisplay"></div>
+        <div class="practice-history-list" id="practiceHistoryList">
+          <div class="card-header" style="margin-top:14px;">
+            <span class="card-title">演练记录</span>
+            <span class="text-sm text-muted" id="historyCount">0 条</span>
+          </div>
+          <div id="practiceHistoryItems"></div>
+        </div>
+        <div class="status-line" id="practiceStatus">尚未记录今日演练完成</div>
+      </div>
+    </div>
+
+    <!-- Translate Section -->
+    <div class="section-card card learn-panel" id="section-translate">
+      <div class="section-header">
+        <img class="section-icon-img" src="assets/icons/translate_nick_selfie.png" alt="翻译">
+        <div class="section-title-group">
+          <div class="section-title">手写和语音翻译</div>
+          <div class="section-subtitle">写中文或说中文，统一翻译成英文并朗读</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="translate-tool">
+          <div class="translate-tip">可以输入中文词语、短句或日常表达，也可以点击麦克风说中文。系统会先用本地常用表达库生成英文，适合日常练习。</div>
+          <div class="voice-translate-panel">
+            <button class="mic-btn" id="handwriteMicBtn" title="点击开始中文语音输入">&#127908;</button>
+            <div class="voice-translate-main">
+              <div class="voice-status" id="handwriteVoiceStatus">点击麦克风语音输入中文，或在下方手写输入</div>
+              <div class="translation-zh" id="voiceTranscript">还没有识别内容</div>
+            </div>
+          </div>
+          <textarea id="handwriteInput" placeholder="在这里写中文，比如：我想练习英语口语。"></textarea>
+          <div class="btn-row">
+            <button class="btn btn-secondary" id="clearHandwrite">清空</button>
+            <button class="btn btn-primary" id="translateHandwrite">翻译成英文</button>
+            <button class="btn btn-primary" id="repeatVoiceTranslation">朗读英文</button>
+          </div>
+          <div class="translation-result-card empty" id="handwriteResult">翻译结果会显示在这里</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Tab 3: Vocab ========== -->
+  <div class="tab-content" id="tab-vocab">
+    <div class="tab-duo-banner">
+      <div class="tab-duo-copy"><strong>词库侦探箱</strong><span>单词、短语、语句和金句都可以沉淀</span></div>
+      <svg class="mini-duo-svg" viewBox="0 0 160 110"><path d="M29 18l8-12 9 11 9-11 8 12c12 12 10 35-4 46-15 12-39 12-54 0-14-11-16-34-4-46z" fill="#d86f23" stroke="#2b1d16" stroke-width="4"/><ellipse cx="46" cy="48" rx="22" ry="16" fill="#fff4df"/><circle cx="37" cy="43" r="3"/><circle cx="54" cy="43" r="3"/><path d="M36 70c8-12 18-18 30-18s22 6 30 18v32H36z" fill="#b9d66b" stroke="#2b1d16" stroke-width="4"/><rect x="66" y="20" width="22" height="16" rx="4" fill="#fff" stroke="#2b1d16" stroke-width="3"/><path d="M106 12c-8-14-19 0-9 36M132 12c8-14 19 0 9 36" fill="#b8b8b8" stroke="#2b1d16" stroke-width="4"/><path d="M98 48c4-26 43-26 47 0 4 25-9 43-24 43s-27-18-23-43z" fill="#b8b8b8" stroke="#2b1d16" stroke-width="4"/><ellipse cx="121" cy="70" rx="20" ry="14" fill="#f5f0e6"/><circle cx="114" cy="58" r="3" fill="#5b4be8"/><circle cx="128" cy="58" r="3" fill="#5b4be8"/><path d="M101 100c6-14 13-20 21-20s15 6 21 20" fill="#5b8db8" stroke="#2b1d16" stroke-width="4"/></svg>
+    </div>
+    <div class="card" style="margin: 12px 16px;">
+      <div class="card-header">
+        <span class="card-title">词库列表</span>
+        <span class="text-sm text-muted">单词/短语/语句/金句</span>
+      </div>
+      <div class="vocab-filter-row" id="vocabFilters">
+        <button class="vocab-filter active" data-filter="all">全部</button>
+        <button class="vocab-filter" data-filter="单词"><img class="vocab-filter-icon" src="assets/icons/vocab_filter_word.png" alt="单词">单词</button>
+        <button class="vocab-filter" data-filter="短语"><img class="vocab-filter-icon" src="assets/icons/vocab_filter_phrase.png" alt="短语">短语</button>
+        <button class="vocab-filter" data-filter="语句"><img class="vocab-filter-icon" src="assets/icons/vocab_filter_sentence.png" alt="语句">语句</button>
+        <button class="vocab-filter" data-filter="金句"><img class="vocab-filter-icon" src="assets/icons/vocab_filter_quote.png" alt="金句">金句</button>
+      </div>
+      <div class="vocab-tags" id="vocabTags">
+        <span class="vocab-tag" id="emptyVocab">暂无收录内容</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin: 12px 16px;">
+      <div class="card-header">
+        <span class="card-title">词库详情</span>
+      </div>
+      <div class="vocab-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>来源</th>
+              <th>类型</th>
+              <th>内容</th>
+              <th>释义</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="vocabTable">
+            <tr>
+              <td>阅读</td>
+              <td>单词</td>
+              <td><code>address</code></td>
+              <td>处理、解决</td>
+              <td><button class="word-btn speak" data-speak="address" title="朗读"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></td>
+            </tr>
+            <tr>
+              <td>新闻</td>
+              <td>单词</td>
+              <td><code>priority</code></td>
+              <td>优先事项</td>
+              <td><button class="word-btn speak" data-speak="priority" title="朗读"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="status-line" id="globalStatus">所有数据仅保存在本地</div>
+  </div>
+
+  <!-- ========== Tab 4: Data ========== -->
+  <div class="tab-content" id="tab-data">
+    <div class="tab-duo-banner">
+      <div class="tab-duo-copy"><strong>复盘报告站</strong><span>分版块看表现，找到下一步练习重点</span></div>
+      <svg class="mini-duo-svg" viewBox="0 0 160 110"><g transform="translate(6 8)"><path d="M18 4l5-3 4 6 4-6 5 3c6 5 6 16 0 22-6 6-18 6-24 0-6-6-6-17 0-22z" fill="#d86f23" stroke="#2b1d16" stroke-width="3"/><ellipse cx="23" cy="20" rx="14" ry="11" fill="#fff4df"/><circle cx="18" cy="17" r="2.5" fill="#2b1d16"/><circle cx="28" cy="17" r="2.5" fill="#2b1d16"/><path d="M21 24h4l-2 3z" fill="#2b1d16"/><path d="M19 29c3 2 6 2 9 0" fill="none" stroke="#2b1d16" stroke-width="1.5" stroke-linecap="round"/><path d="M12 38c3-5 6-7 11-7s8 2 11 7v28H12z" fill="#b9d66b" stroke="#2b1d16" stroke-width="3"/><rect x="4" y="44" width="18" height="14" rx="2" fill="#fff" stroke="#2b1d16" stroke-width="2"/><rect x="7" y="50" width="3" height="5" fill="#d86f23"/><rect x="11" y="47" width="3" height="8" fill="#2d8c63"/><rect x="15" y="52" width="3" height="3" fill="#f4b23b"/><path d="M12 42l-3 3M34 42l5 3" stroke="#2b1d16" stroke-width="3.5" stroke-linecap="round"/><path d="M18 66v8M30 66v8" stroke="#2b1d16" stroke-width="3.5" stroke-linecap="round"/><path d="M38 52c7-1 9 4 5 7-3 2-7 0-7-3" fill="#d86f23" stroke="#2b1d16" stroke-width="2.5"/></g><g transform="translate(84 12)"><path d="M16 0c-3-5-8 1-4 16M28 0c3-5 8 1 4 16" fill="#b8b8b8" stroke="#2b1d16" stroke-width="3" stroke-linecap="round"/><path d="M15 4c-1-3-4 1-2 10M29 4c1-3 4 1 2 10" fill="#e8a5c0"/><ellipse cx="22" cy="22" rx="13" ry="11" fill="#b8b8b8" stroke="#2b1d16" stroke-width="3"/><ellipse cx="22" cy="25" rx="10" ry="7" fill="#f5f0e6"/><circle cx="17" cy="20" r="2.5" fill="#5b4be8"/><circle cx="27" cy="20" r="2.5" fill="#5b4be8"/><path d="M20 27h4l-2 2z" fill="#e8a5c0"/><path d="M19 31c2 1.5 5 1.5 7 0" fill="none" stroke="#2b1d16" stroke-width="1.5" stroke-linecap="round"/><path d="M11 38c3-5 6-7 11-7s8 2 11 7v26H11z" fill="#5b8db8" stroke="#2b1d16" stroke-width="3"/><rect x="28" y="42" width="16" height="20" rx="2" fill="#fff" stroke="#2b1d16" stroke-width="2.5"/><path d="M31 48h10M31 52h10M31 56h6" stroke="#5b8db8" stroke-width="1.2"/><circle cx="36" cy="42" r="2" fill="#f4b23b"/><path d="M11 42l-4 5M28 42l3 2" stroke="#2b1d16" stroke-width="3.5" stroke-linecap="round"/><path d="M17 64v8M27 64v8" stroke="#2b1d16" stroke-width="3.5" stroke-linecap="round"/></g></svg>
+    </div>
+    <div class="data-tabs">
+      <button class="data-tab active" data-period="week">本周</button>
+      <button class="data-tab" data-period="month">本月</button>
+    </div>
+
+    <div class="analysis-card card">
+      <div class="analysis-title">分析结论</div>
+      <div class="analysis-text" id="analysisText">加载中...</div>
+    </div>
+
+    <div class="section-review-grid" id="sectionReviewGrid"></div>
+
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-box-value" id="totalDays">0</div>
+        <div class="stat-box-label">打卡天数</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-value" id="completionRate">0%</div>
+        <div class="stat-box-label">总完成率</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-value" id="bestStreak">0</div>
+        <div class="stat-box-label">连续打卡</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-value" id="totalWords">0</div>
+        <div class="stat-box-label">词库内容</div>
+      </div>
+    </div>
+
+    <div class="heatmap-card card">
+      <div class="card-header">
+        <span class="card-title">打卡热力图</span>
+        <span class="text-sm text-muted" id="heatmapPeriod">本周</span>
+      </div>
+      <div class="heatmap" id="heatmap"></div>
+      <div class="heatmap-legend">
+        <span>少</span>
+        <div class="heatmap-dot" style="background: var(--bg-soft);"></div>
+        <div class="heatmap-dot" style="background: var(--accent-soft);"></div>
+        <div class="heatmap-dot" style="background: rgba(216,111,35,0.4);"></div>
+        <div class="heatmap-dot" style="background: rgba(216,111,35,0.6);"></div>
+        <div class="heatmap-dot" style="background: var(--accent);"></div>
+        <span>多</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Tab 5: Profile ========== -->
+  <div class="tab-content" id="tab-profile">
+    <div class="tab-duo-banner">
+      <div class="tab-duo-copy"><strong>我的学习名片</strong><span>设置头像、昵称，保留你的学习节奏</span></div>
+      <svg class="mini-duo-svg" viewBox="0 0 160 110"><path d="M29 18l8-12 9 11 9-11 8 12c12 12 10 35-4 46-15 12-39 12-54 0-14-11-16-34-4-46z" fill="#d86f23" stroke="#2b1d16" stroke-width="4"/><ellipse cx="46" cy="48" rx="22" ry="16" fill="#fff4df"/><circle cx="37" cy="43" r="3"/><circle cx="54" cy="43" r="3"/><path d="M36 70c8-12 18-18 30-18s22 6 30 18v32H36z" fill="#b9d66b" stroke="#2b1d16" stroke-width="4"/><path d="M106 12c-8-14-19 0-9 36M132 12c8-14 19 0 9 36" fill="#b8b8b8" stroke="#2b1d16" stroke-width="4"/><path d="M98 48c4-26 43-26 47 0 4 25-9 43-24 43s-27-18-23-43z" fill="#b8b8b8" stroke="#2b1d16" stroke-width="4"/><ellipse cx="121" cy="70" rx="20" ry="14" fill="#f5f0e6"/><circle cx="114" cy="58" r="3" fill="#5b4be8"/><circle cx="128" cy="58" r="3" fill="#5b4be8"/><path d="M101 100c6-14 13-20 21-20s15 6 21 20" fill="#5b8db8" stroke="#2b1d16" stroke-width="4"/></svg>
+    </div>
+    <div class="profile-card">
+      <div class="profile-card-avatar" id="profileAvatar"></div>
+      <div>
+        <div class="profile-card-name" id="profileName">朱迪 · Judy Hopps</div>
+        <div class="profile-card-nick" id="profileNick">昵称：胡萝卜警官 · 每天陪你复盘学习</div>
+        <div class="btn-row" style="justify-content:flex-start; margin-top:8px;">
+          <button class="word-btn add" id="editProfile">修改名片</button>
+          <label class="word-btn speak" for="avatarUpload" style="cursor:pointer;">改头像</label>
+          <input id="avatarUpload" type="file" accept="image/*" style="display:none;">
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-list">
+      <div class="setting-item">
+        <div class="setting-label">
+          <div class="setting-icon" style="background: var(--accent-soft);"><img src="assets/icons/judy_setting_1.png" alt="学习天数"></div>
+          <span>学习天数</span>
+        </div>
+        <span class="text-accent font-bold" id="learningDays">0 天</span>
+      </div>
+      <div class="setting-item">
+        <div class="setting-label">
+          <div class="setting-icon" style="background: var(--accent2-soft);"><img src="assets/icons/judy_setting_2.png" alt="总打卡次数"></div>
+          <span>总打卡次数</span>
+        </div>
+        <span class="text-accent font-bold" id="totalCheckins">0 次</span>
+      </div>
+      <div class="setting-item">
+        <div class="setting-label">
+          <div class="setting-icon" style="background: var(--accent3-soft);"><img src="assets/icons/judy_setting_3.png" alt="词库内容"></div>
+          <span>词库内容</span>
+        </div>
+        <span class="text-accent font-bold" id="totalVocab">0 个</span>
+      </div>
+    </div>
+
+    <div class="settings-list mt-4">
+      <div class="setting-item">
+        <div class="setting-label">
+          <div class="setting-icon" style="background: rgba(220,38,38,0.1);"><img src="assets/icons/judy_setting_4.png" alt="重置"></div>
+          <span>重置所有数据</span>
+        </div>
+        <button class="setting-action danger" id="resetData">重置</button>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <div class="about-logo" aria-label="尼克和朱迪"></div>
+      <div class="about-text">
+        欢迎来到疯狂动物城的英语天地<br>
+        所有数据仅本地存储，保护隐私
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Tab Bar -->
+  <nav class="tab-bar">
+    <button class="tab-item active" data-tab="home">
+      <svg class="tab-fox-icon" viewBox="0 0 48 48">
+        <path d="M17 7l4-5 3 5 4-5 4 5c7 5 7 15 1 20-5 5-13 5-18 0-6-5-6-15 2-20z" fill="var(--accent)" opacity=".28"/>
+        <path d="M17 7l4-5 3 5 4-5 4 5c7 5 7 15 1 20-5 5-13 5-18 0-6-5-6-15 2-20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <ellipse cx="21" cy="18" rx="1.4" ry="1.8" fill="var(--ink)"/><ellipse cx="27" cy="18" rx="1.4" ry="1.8" fill="var(--ink)"/>
+        <path d="M21 24c2 1.4 4 1.4 6 0" fill="none" stroke="var(--ink)" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M15 28c4-5 8-7 12-7s8 2 12 7v11H15z" fill="#b9d66b" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M24 22l2 12 3-12" fill="#7b4bb2" stroke="currentColor" stroke-width="1"/>
+        <path d="M16 31l-5 5M32 31l5 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M19 39v6M31 39v6" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M35 31c7 3 8 9 2 11-5 2-10-2-9-7" fill="var(--accent)" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span class="tab-label">首页</span>
+    </button>
+    <button class="tab-item" data-tab="learn">
+      <svg class="tab-fox-icon" viewBox="0 0 48 48">
+        <path d="M17 7l4-5 3 5 4-5 4 5c7 5 7 15 1 20-5 5-13 5-18 0-6-5-6-15 2-20z" fill="var(--accent2)" opacity=".28"/>
+        <path d="M17 7l4-5 3 5 4-5 4 5c7 5 7 15 1 20-5 5-13 5-18 0-6-5-6-15 2-20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <ellipse cx="21" cy="18" rx="1.4" ry="1.8" fill="var(--ink)"/><ellipse cx="27" cy="18" rx="1.4" ry="1.8" fill="var(--ink)"/>
+        <path d="M21 24c2 1.4 4 1.4 6 0" fill="none" stroke="var(--ink)" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M15 28c4-5 8-7 12-7s8 2 12 7v11H15z" fill="#b9d66b" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M24 22l2 12 3-12" fill="#7b4bb2" stroke="currentColor" stroke-width="1"/>
+        <path d="M17 31l-6-1M31 31l6-1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M19 39v6M31 39v6" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M35 31c7 3 8 9 2 11-5 2-10-2-9-7" fill="var(--accent2)" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span class="tab-label">学习</span>
+    </button>
+    <button class="tab-item" data-tab="vocab">
+      <svg class="tab-fox-icon" viewBox="0 0 48 48">
+        <path d="M17 7l4-5 3 5 4-5 4 5c7 5 7 15 1 20-5 5-13 5-18 0-6-5-6-15 2-20z" fill="var(--accent3)" opacity=".28"/>
+        <path d="M17 7l4-5 3 5 4-5 4 5c7 5 7 15 1 20-5 5-13 5-18 0-6-5-6-15 2-20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <ellipse cx="21" cy="18" rx="1.4" ry="1.8" fill="var(--ink)"/><ellipse cx="27" cy="18" rx="1.4" ry="1.8" fill="var(--ink)"/>
+        <path d="M21 24c2 1.4 4 1.4 6 0" fill="none" stroke="var(--ink)" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M15 28c4-5 8-7 12-7s8 2 12 7v11H15z" fill="#b9d66b" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M24 22l2 12 3-12" fill="#7b4bb2" stroke="currentColor" stroke-width="1"/>
+        <path d="M16 31l-4 6M32 31l4 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M19 39v6M31 39v6" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M35 31c7 3 8 9 2 11-5 2-10-2-9-7" fill="var(--accent3)" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span class="tab-label">词库</span>
+    </button>
+    <button class="tab-item" data-tab="data">
+      <svg class="tab-fox-icon" viewBox="0 0 48 48">
+        <path d="M17 7l4-5 3 5 4-5 4 5c7 5 7 15 1 20-5 5-13 5-18 0-6-5-6-15 2-20z" fill="var(--accent)" opacity=".28"/>
+        <path d="M17 7l4-5 3 5 4-5 4 5c7 5 7 15 1 20-5 5-13 5-18 0-6-5-6-15 2-20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <ellipse cx="21" cy="18" rx="1.4" ry="1.8" fill="var(--ink)"/><ellipse cx="27" cy="18" rx="1.4" ry="1.8" fill="var(--ink)"/>
+        <path d="M21 24c2 1.4 4 1.4 6 0" fill="none" stroke="var(--ink)" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M15 28c4-5 8-7 12-7s8 2 12 7v11H15z" fill="#b9d66b" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M24 22l2 12 3-12" fill="#7b4bb2" stroke="currentColor" stroke-width="1"/>
+        <path d="M17 31l-6 4M31 31l6 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M19 39v6M31 39v6" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M35 31c7 3 8 9 2 11-5 2-10-2-9-7" fill="var(--accent)" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span class="tab-label">数据</span>
+    </button>
+    <button class="tab-item" data-tab="profile">
+      <svg class="tab-fox-icon" viewBox="0 0 48 48">
+        <path d="M17 7l4-5 3 5 4-5 4 5c7 5 7 15 1 20-5 5-13 5-18 0-6-5-6-15 2-20z" fill="var(--accent2)" opacity=".28"/>
+        <path d="M17 7l4-5 3 5 4-5 4 5c7 5 7 15 1 20-5 5-13 5-18 0-6-5-6-15 2-20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <ellipse cx="21" cy="18" rx="1.4" ry="1.8" fill="var(--ink)"/><ellipse cx="27" cy="18" rx="1.4" ry="1.8" fill="var(--ink)"/>
+        <path d="M21 24c2 1.4 4 1.4 6 0" fill="none" stroke="var(--ink)" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M15 28c4-5 8-7 12-7s8 2 12 7v11H15z" fill="#b9d66b" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M24 22l2 12 3-12" fill="#7b4bb2" stroke="currentColor" stroke-width="1"/>
+        <path d="M16 31l-5 2M32 31l5 2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M19 39v6M31 39v6" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M35 31c7 3 8 9 2 11-5 2-10-2-9-7" fill="var(--accent2)" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span class="tab-label">我的</span>
+    </button>
+  </nav>
+
+  <script>
+    (function() {
+      var now = new Date();
+      var todayKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+      var selectedDateKey = todayKey;
+
+      // Current date display
+      var currentDateEl = document.getElementById('currentDate');
+      currentDateEl.textContent = now.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric', weekday: 'short' });
+
+      var dayNames = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+
+      // 每日金句
+      var dailyQuotes = [
+        ['Small steps every day lead to big changes.', '每天的小步前进，会带来巨大的改变。'],
+        ['Learn with courage, review with patience.', '勇敢学习，耐心复盘。'],
+        ['A new word is a new way to see the world.', '一个新词，就是一种看世界的新方式。'],
+        ['Practice turns hesitation into confidence.', '练习会把犹豫变成自信。'],
+        ['Keep going; fluency is built one sentence at a time.', '继续前进；流利表达是一句一句练出来的。'],
+        ['Curiosity makes every lesson lighter.', '好奇心让每一课都更轻盈。'],
+        ['Review today, speak better tomorrow.', '今天复盘，明天说得更好。']
+      ];
+      var dailyQuote = dailyQuotes[now.getDay()];
+      document.getElementById('dailyQuoteEn').textContent = dailyQuote[0];
+      document.getElementById('dailyQuoteZh').textContent = dailyQuote[1];
+
+      function updateWeatherText(text) {
+        document.getElementById('weatherPill').textContent = text;
+      }
+
+      function loadWeather() {
+        if (!navigator.geolocation || !window.fetch) {
+          updateWeatherText('本地天气 · --°C');
+          return;
+        }
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          var lat = pos.coords.latitude.toFixed(3);
+          var lon = pos.coords.longitude.toFixed(3);
+          var weatherUrl = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current_weather=true';
+          var placeUrl = 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + lat + '&longitude=' + lon + '&localityLanguage=zh';
+          Promise.all([
+            fetch(weatherUrl).then(function(res) { return res.json(); }),
+            fetch(placeUrl).then(function(res) { return res.json(); }).catch(function() { return {}; })
+          ]).then(function(results) {
+              var data = results[0];
+              var place = results[1] || {};
+              var temp = data && data.current_weather ? Math.round(data.current_weather.temperature) : '--';
+              var name = place.city || place.locality || place.principalSubdivision || '当前位置';
+              updateWeatherText(name + ' · ' + temp + '°C');
+            })
+            .catch(function() { updateWeatherText('当前位置 · --°C'); });
+        }, function() {
+          updateWeatherText('未授权定位 · --°C');
+        }, { timeout: 5000, maximumAge: 600000 });
+      }
+      loadWeather();
+
+      // Collapsed date display
+      var dateCurrentText = document.getElementById('dateCurrentText');
+      var dateCurrentSub = document.getElementById('dateCurrentSub');
+      function formatDateKey(d) {
+        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+      }
+      function setSelectedDate(d) {
+        selectedDateKey = formatDateKey(d);
+        var label = (d.getMonth() + 1) + '月' + d.getDate() + '日';
+        dateCurrentText.textContent = label;
+        dateCurrentSub.textContent = dayNames[d.getDay()];
+        currentDateEl.textContent = label + dayNames[d.getDay()];
+      }
+      setSelectedDate(now);
+
+      // Date selector toggle
+      var dateSelector = document.getElementById('dateSelector');
+      document.getElementById('dateHeader').addEventListener('click', function() {
+        dateSelector.classList.toggle('expanded');
+      });
+      currentDateEl.style.cursor = 'pointer';
+      currentDateEl.addEventListener('click', function() {
+        dateSelector.classList.toggle('expanded');
+      });
+
+      // Date tabs
+      var dateTabs = document.getElementById('dateTabs');
+      var daysInCurrentMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+      for (var i = 1; i <= daysInCurrentMonth; i++) {
+        var d = new Date(now.getFullYear(), now.getMonth(), i);
+        var isToday = i === now.getDate();
+        var tab = document.createElement('div');
+        tab.className = 'date-tab' + (isToday ? ' active' : '');
+        tab.innerHTML = '<div class="day-name">' + dayNames[d.getDay()] + '</div><div class="day-num">' + d.getDate() + '</div>';
+        tab.dataset.date = formatDateKey(d);
+        tab.addEventListener('click', function() {
+          document.querySelectorAll('.date-tab').forEach(function(t) { t.classList.remove('active'); });
+          this.classList.add('active');
+          var selected = new Date(this.dataset.date + 'T00:00:00');
+          setSelectedDate(selected);
+          updateCompletion();
+          dateSelector.classList.remove('expanded');
+        });
+        dateTabs.appendChild(tab);
+      }
+
+      // Tab switching
+      document.querySelectorAll('.tab-item').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var tab = this.dataset.tab;
+          document.querySelectorAll('.tab-item').forEach(function(t) { t.classList.remove('active'); });
+          this.classList.add('active');
+          document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+          document.getElementById('tab-' + tab).classList.add('active');
+          window.scrollTo(0, 0);
+        });
+      });
+
+      // Learn mode switching
+      document.querySelectorAll('.learn-mode-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var mode = this.dataset.mode;
+          document.querySelectorAll('.learn-mode-btn').forEach(function(b) { b.classList.remove('active'); });
+          this.classList.add('active');
+          document.querySelectorAll('.learn-panel').forEach(function(p) { p.classList.remove('active'); });
+          var panel = document.getElementById('section-' + mode);
+          if (panel) panel.classList.add('active');
+        });
+      });
+
+      // Quick links
+      document.querySelectorAll('.quick-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+          var tab = this.dataset.tab;
+          var section = this.dataset.section;
+          document.querySelector('[data-tab="' + tab + '"]').click();
+          if (section) {
+            setTimeout(function() {
+              var modeBtn = document.querySelector('.learn-mode-btn[data-mode="' + section + '"]');
+              if (modeBtn) modeBtn.click();
+              else {
+                var el = document.getElementById('section-' + section);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }, 100);
+          }
+        });
+      });
+
+      // Common words
+      var commonWords = [
+        ['about', '关于'], ['after', '之后'], ['again', '再次'], ['always', '总是'],
+        ['another', '另一个'], ['around', '周围'], ['because', '因为'], ['before', '之前'],
+        ['between', '之间'], ['business', '业务'], ['change', '改变'], ['choose', '选择'],
+        ['clear', '清楚'], ['common', '常见'], ['confirm', '确认'], ['different', '不同'],
+        ['early', '早的'], ['enough', '足够'], ['expect', '期待'], ['explain', '解释'],
+        ['follow', '跟随'], ['important', '重要'], ['improve', '改进'], ['include', '包括'],
+        ['learn', '学习'], ['listen', '听'], ['meeting', '会议'], ['message', '消息'],
+        ['moment', '片刻'], ['needed', '需要'], ['notice', '注意'], ['practice', '练习'],
+        ['prepare', '准备'], ['problem', '问题'], ['project', '项目'], ['quickly', '快速'],
+        ['reason', '原因'], ['receive', '收到'], ['remember', '记住'], ['report', '报告'],
+        ['request', '请求'], ['review', '复盘'], ['schedule', '日程'], ['support', '支持'],
+        ['today', '今天'], ['understand', '理解'], ['update', '更新'], ['usually', '通常'],
+        ['voice', '声音'], ['without', '没有']
+      ];
+
+      function speakWord(word) {
+        if (!('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        var utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.82;
+        window.speechSynthesis.speak(utterance);
+      }
+
+      function renderDailyWords() {
+        var board = document.getElementById('wordBoard');
+        var pool = commonWords.slice().sort(function() { return Math.random() - 0.5; }).slice(0, 10);
+        localStorage.setItem('nickDailyWords', JSON.stringify(pool));
+        board.innerHTML = '';
+        pool.forEach(function(item) {
+          var card = document.createElement('div');
+          card.className = 'word-card';
+          card.innerHTML = '<strong>' + item[0] + '</strong><span>' + item[1] + '</span><div class="word-card-actions"><button class="word-btn speak" data-speak="' + item[0] + '">朗读</button><button class="word-btn add" data-add="' + item[0] + '" data-meaning="' + item[1] + '">入库</button></div>';
+          board.appendChild(card);
+        });
+      }
+
+      // Load or init words
+      var storedDailyWords = localStorage.getItem('nickDailyWords');
+      if (storedDailyWords) {
+        var board = document.getElementById('wordBoard');
+        board.innerHTML = '';
+        JSON.parse(storedDailyWords).forEach(function(item) {
+          var card = document.createElement('div');
+          card.className = 'word-card';
+          card.innerHTML = '<strong>' + item[0] + '</strong><span>' + item[1] + '</span><div class="word-card-actions"><button class="word-btn speak" data-speak="' + item[0] + '">朗读</button><button class="word-btn add" data-add="' + item[0] + '" data-meaning="' + item[1] + '">入库</button></div>';
+          board.appendChild(card);
+        });
+      } else {
+        renderDailyWords();
+      }
+
+      document.getElementById('shuffleWords').addEventListener('click', function() {
+        renderDailyWords();
+      });
+
+      // Word board clicks
+      document.getElementById('wordBoard').addEventListener('click', function(e) {
+        var speak = e.target.getAttribute('data-speak');
+        var add = e.target.getAttribute('data-add');
+        if (speak) speakWord(speak);
+        if (add) addWord(add, e.target.getAttribute('data-meaning'), '单词', '每日单词');
+      });
+
+      // Vocab
+      var activeVocabFilter = 'all';
+      var savedWords = JSON.parse(localStorage.getItem('nickWorkbenchWords') || '[]').map(normalizeVocabItem);
+      localStorage.setItem('nickWorkbenchWords', JSON.stringify(savedWords));
+
+      function inferVocabType(text) {
+        text = String(text || '').trim();
+        if (/[.!?。！？]$/.test(text) && text.split(/\s+/).length > 3) return '语句';
+        if (text.split(/\s+/).length > 1) return '短语';
+        return '单词';
+      }
+
+      function normalizeVocabItem(item) {
+        if (typeof item === 'string') {
+          return { content: item, meaning: '', type: inferVocabType(item), source: '历史词库' };
+        }
+        return {
+          content: item.content || item.word || '',
+          meaning: item.meaning || '',
+          type: item.type || inferVocabType(item.content || item.word || ''),
+          source: item.source || '手动收录'
+        };
+      }
+
+      function getFilteredVocab() {
+        if (activeVocabFilter === 'all') return savedWords;
+        return savedWords.filter(function(item) { return item.type === activeVocabFilter; });
+      }
+
+      function renderSavedWords() {
+        var tags = document.getElementById('vocabTags');
+        var empty = document.getElementById('emptyVocab');
+        var table = document.getElementById('vocabTable');
+        var list = getFilteredVocab();
+        tags.innerHTML = '';
+        table.innerHTML = '';
+        if (!list.length) {
+          var emptyTag = document.createElement('span');
+          emptyTag.className = 'vocab-tag';
+          emptyTag.id = 'emptyVocab';
+          emptyTag.textContent = savedWords.length ? '当前分类暂无内容' : '暂无收录内容';
+          tags.appendChild(emptyTag);
+          table.innerHTML = '<tr><td colspan="5" class="text-center text-muted">暂无数据</td></tr>';
+          return;
+        }
+        if (empty) empty.style.display = 'none';
+        list.forEach(function(item) {
+          var tag = document.createElement('span');
+          tag.className = 'vocab-tag';
+          tag.textContent = item.type + ' · ' + item.content;
+          tags.appendChild(tag);
+
+          var row = document.createElement('tr');
+          row.innerHTML = '<td>' + escapeHtml(item.source) + '</td><td>' + escapeHtml(item.type) + '</td><td><code>' + escapeHtml(item.content) + '</code></td><td>' + escapeHtml(item.meaning || '') + '</td><td><button class="word-btn speak" data-speak="' + escapeHtml(item.content) + '" title="朗读"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button></td>';
+          table.appendChild(row);
+        });
+      }
+
+      function addWord(word, meaning, type, source) {
+        var content = String(word || '').trim();
+        if (!content) return;
+        var item = {
+          content: content,
+          meaning: meaning || '',
+          type: type || inferVocabType(content),
+          source: source || '阅读'
+        };
+        var exists = savedWords.some(function(w) {
+          return w.content.toLowerCase() === item.content.toLowerCase() && w.type === item.type;
+        });
+        if (!exists) {
+          savedWords.push(item);
+          localStorage.setItem('nickWorkbenchWords', JSON.stringify(savedWords));
+          renderSavedWords();
+          updateStats();
+          renderAnalysis(document.querySelector('.data-tab.active').dataset.period);
+        }
+      }
+
+      document.getElementById('vocabFilters').addEventListener('click', function(e) {
+        var target = e.target.closest('.vocab-filter');
+        var filter = target && target.getAttribute('data-filter');
+        if (!filter) return;
+        activeVocabFilter = filter;
+        document.querySelectorAll('.vocab-filter').forEach(function(btn) { btn.classList.remove('active'); });
+        target.classList.add('active');
+        renderSavedWords();
+      });
+
+      document.getElementById('addQuoteToVocab').addEventListener('click', function() {
+        addWord(dailyQuote[0], dailyQuote[1], '金句', '首页每日金句');
+      });
+
+      var quoteSavedKey = 'yezuDailyQuoteSaved:' + todayKey;
+      if (!localStorage.getItem(quoteSavedKey)) {
+        addWord(dailyQuote[0], dailyQuote[1], '金句', '首页每日金句');
+        localStorage.setItem(quoteSavedKey, '1');
+      }
+
+      // Word chips in reading
+      document.querySelectorAll('.word-chip').forEach(function(chip) {
+        chip.addEventListener('click', function() {
+          var word = chip.getAttribute('data-word');
+          var meaning = chip.getAttribute('data-meaning');
+          document.getElementById('meaningPop').textContent = meaning + ' - 已加入词库';
+          addWord(word, meaning, inferVocabType(word), '每日阅读');
+        });
+      });
+
+      renderSavedWords();
+
+      // Vocab table speak buttons
+      document.getElementById('vocabTable').addEventListener('click', function(e) {
+        var speak = e.target.getAttribute('data-speak');
+        if (speak) speakWord(speak);
+      });
+
+      // Completion
+      var completionMap = {
+        '每日单词': 'wordsStatus',
+        '每日阅读': 'readingStatus',
+        '每日新闻': 'newsStatus',
+        '场景演练': 'practiceStatus'
+      };
+
+      function getDoneHistory() {
+        return JSON.parse(localStorage.getItem('localDoneHistory') || '{}');
+      }
+
+      function saveDoneHistory(history) {
+        localStorage.setItem('localDoneHistory', JSON.stringify(history));
+      }
+
+      function updateCompletion() {
+        var history = getDoneHistory();
+        Object.keys(completionMap).forEach(function(name) {
+          var el = document.getElementById(completionMap[name]);
+          var done = (history[name] || []).indexOf(selectedDateKey) !== -1;
+          var selectedLabel = selectedDateKey === todayKey ? '今日' : '该日';
+          el.textContent = done ? ('已记录' + selectedLabel + name + '完成') : ('尚未记录' + selectedLabel + name + '完成');
+        });
+        updateProgress();
+        updateStats();
+      }
+
+      function updateProgress() {
+        var history = getDoneHistory();
+        var items = ['每日单词', '每日阅读', '每日新闻', '场景演练'];
+        var completed = 0;
+        var dots = ['dotWords', 'dotReading', 'dotNews', 'dotPractice'];
+        items.forEach(function(name, i) {
+          var done = (history[name] || []).indexOf(selectedDateKey) !== -1;
+          document.getElementById(dots[i]).className = 'progress-dot ' + (done ? 'completed' : 'pending');
+          if (done) completed++;
+        });
+        var percent = Math.round((completed / 4) * 100);
+        document.getElementById('progressPercent').textContent = percent + '%';
+        document.getElementById('progressRing').style.setProperty('--progress', percent + '%');
+        document.getElementById('todayCompleted').textContent = completed + '/4';
+      }
+
+      document.querySelectorAll('[data-complete]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var name = btn.getAttribute('data-complete');
+          localStorage.setItem('localDone:' + name, new Date().toISOString());
+          var history = getDoneHistory();
+          history[name] = history[name] || [];
+          if (history[name].indexOf(todayKey) === -1) history[name].push(todayKey);
+          saveDoneHistory(history);
+          updateCompletion();
+        });
+      });
+
+      // Stats
+      function updateStats() {
+        var words = JSON.parse(localStorage.getItem('nickWorkbenchWords') || '[]');
+        document.getElementById('vocabCount').textContent = words.length;
+        document.getElementById('pendingCount').textContent = words.length;
+        document.getElementById('totalWords').textContent = words.length;
+        document.getElementById('totalVocab').textContent = words.length;
+
+        var history = getDoneHistory();
+        var allDates = [];
+        Object.values(history).forEach(function(dates) {
+          allDates = allDates.concat(dates);
+        });
+        var uniqueDays = new Set(allDates);
+        document.getElementById('totalCheckins').textContent = allDates.length + ' 次';
+        document.getElementById('learningDays').textContent = uniqueDays.size + ' 天';
+      }
+
+      function loadProfileCard() {
+        var name = localStorage.getItem('yezuProfileName') || '朱迪 · Judy Hopps';
+        var nick = localStorage.getItem('yezuProfileNick') || '胡萝卜警官 · 每天陪你复盘学习';
+        var avatar = localStorage.getItem('yezuProfileAvatar');
+        document.getElementById('profileName').textContent = name;
+        document.getElementById('profileNick').textContent = '昵称：' + nick;
+        var cardAvatar = document.getElementById('profileAvatar');
+        if (avatar) {
+          cardAvatar.style.background = '#e8eef7';
+          cardAvatar.innerHTML = '<img src="' + avatar + '" alt="我的头像" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">';
+        } else {
+          cardAvatar.innerHTML = '';
+          cardAvatar.style.background = '#e8eef7 url("assets/icons/judy_hat_avatar.png") center / contain no-repeat';
+        }
+      }
+
+      document.getElementById('editProfile').addEventListener('click', function() {
+        var currentName = localStorage.getItem('yezuProfileName') || '朱迪 · Judy Hopps';
+        var currentNick = localStorage.getItem('yezuProfileNick') || '胡萝卜警官 · 每天陪你复盘学习';
+        var name = prompt('输入名片名称', currentName);
+        if (name === null) return;
+        var nick = prompt('输入昵称', currentNick);
+        if (nick === null) return;
+        localStorage.setItem('yezuProfileName', name.trim() || currentName);
+        localStorage.setItem('yezuProfileNick', nick.trim() || currentNick);
+        loadProfileCard();
+      });
+
+      document.getElementById('avatarUpload').addEventListener('change', function(event) {
+        var file = event.target.files && event.target.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function() {
+          localStorage.setItem('yezuProfileAvatar', reader.result);
+          loadProfileCard();
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // News player
+      var playing = false;
+      document.getElementById('playNews').addEventListener('click', function() {
+        playing = !playing;
+        this.innerHTML = playing ? '&#9646;&#9646;' : '&#9658;';
+        document.getElementById('audioProgress').style.width = playing ? '68%' : '0%';
+        document.getElementById('audioTime').textContent = playing ? '02:05' : '01:20';
+        if (playing && 'speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          var title = document.getElementById('newsTitle').textContent;
+          var utterance = new SpeechSynthesisUtterance(title);
+          utterance.lang = 'en-US';
+          utterance.rate = 0.86;
+          window.speechSynthesis.speak(utterance);
+        } else if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
+      });
+
+      // ========== Scenario Voice Practice ==========
+      var scenarioScripts = {
+        'meeting': {
+          name: '会议中确认需求',
+          opener: "Hi! Let's start our meeting. Could you walk me through the main goal of this project and what you need from our team?",
+          flows: [
+            { keywords: ['goal','project','need','want','build','develop','create'], reply: "Great, that sounds clear. Could you also tell me about the timeline? When do you expect the first deliverable?" },
+            { keywords: ['timeline','deadline','deliverable','week','month','date'], reply: "Understood. And what's the budget range? Do we have any constraints I should know about?" },
+            { keywords: ['budget','cost','money','constraint','limit'], reply: "Thanks for the details. One last question — who are the key stakeholders we should keep in the loop?" },
+            { keywords: ['stakeholder','client','team','manager','boss'], reply: "Perfect! I think we have everything we need. Let me summarize and send a follow-up email. Anything else?" },
+            { keywords: ['no','nothing','else','that','all','good','thanks'], reply: "Excellent! Let's wrap up then. Thanks for the productive meeting!" }
+          ],
+          fallback: "Could you elaborate a bit more on that? I want to make sure I understand correctly.",
+          closer: "Great session! Let's finalize the action items."
+        },
+        'deadline': {
+          name: '礼貌催促项目进度',
+          opener: "Hello! I wanted to check in on the project status. How are things going on your end?",
+          flows: [
+            { keywords: ['progress','going','status','fine','good','well','ok'], reply: "Glad to hear it's on track. Could you give me an estimated completion date? We need to plan our next steps." },
+            { keywords: ['date','complete','finish','week','day','soon'], reply: "Thanks. Is there anything blocking you? I want to make sure we remove any obstacles." },
+            { keywords: ['block','issue','problem','delay','wait','stuck'], reply: "I see. How can I help resolve that? Should we escalate it to the team lead?" },
+            { keywords: ['help','escalate','support','team','lead'], reply: "Absolutely, let's get that sorted. Could you send me a quick update by end of day tomorrow?" },
+            { keywords: ['yes','sure','ok','will','send','update'], reply: "Perfect! I really appreciate your responsiveness. Let's stay in close touch." }
+          ],
+          fallback: "I understand. Could you share a bit more about the current situation?",
+          closer: "Thanks for the update! Let's keep the momentum going."
+        },
+        'restaurant': {
+          name: '餐厅点餐和修改订单',
+          opener: "Welcome! Are you ready to order, or do you need a few more minutes to look at the menu?",
+          flows: [
+            { keywords: ['order','ready','yes','menu','see','look'], reply: "Great! What would you like to start with? We have some excellent appetizers today." },
+            { keywords: ['appetizer','start','soup','salad','first'], reply: "Excellent choice! And for your main course? We have fresh specials on the board." },
+            { keywords: ['main','course','special','steak','pasta','chicken','fish'], reply: "Wonderful! Would you like any modifications? For example, no onions or extra sauce?" },
+            { keywords: ['no','extra','sauce','onion','modify','change','without'], reply: "Noted! I'll make sure the chef knows. Can I get you anything to drink with that?" },
+            { keywords: ['drink','water','wine','beer','juice','tea','coffee'], reply: "Perfect! I'll get that right in. Your order should be ready in about fifteen minutes." }
+          ],
+          fallback: "I'm sorry, could you repeat that? I want to make sure I get your order right.",
+          closer: "Thank you! Your food will be out shortly. Enjoy your meal!"
+        },
+        'customer-service': {
+          name: '向客服解释问题',
+          opener: "Thank you for calling customer service. My name is Alex. How can I help you today?",
+          flows: [
+            { keywords: ['problem','issue','broken','not working','error','wrong'], reply: "I'm sorry to hear that. Could you describe the issue in more detail? When did it start happening?" },
+            { keywords: ['start','began','yesterday','today','week','describe','detail'], reply: "I see. Have you tried any troubleshooting steps already? For example, restarting the device?" },
+            { keywords: ['restart','tried','reset','yes','no','did','attempt'], reply: "Thank you for trying that. Could you provide your account number or order ID so I can look into this?" },
+            { keywords: ['account','number','order','id','code','reference'], reply: "Got it. I can see the issue in our system. I'd like to offer you a replacement or a full refund. Which would you prefer?" },
+            { keywords: ['replacement','refund','new','money','back','either'], reply: "Absolutely! I'll process that for you right away. You should receive a confirmation email within twenty-four hours." }
+          ],
+          fallback: "I apologize for the confusion. Could you explain that again so I can better assist you?",
+          closer: "Thank you for your patience! Is there anything else I can help you with today?"
+        }
+      };
+
+      // Chinese-to-English mini dictionary for common words in these scenarios
+      var zhDict = {
+        '你好':'hello','谢谢':'thank you','不客气':'you are welcome','对不起':'sorry',
+        '项目':'project','会议':'meeting','需求':'requirements','目标':'goal','计划':'plan',
+        '时间':'time','进度':'progress','截止':'deadline','完成':'complete','延期':'delay',
+        '预算':'budget','成本':'cost','客户':'client','团队':'team','经理':'manager',
+        '问题':'problem','帮助':'help','解决':'solve','需要':'need','想要':'want',
+        '确认':'confirm','修改':'modify','更换':'replace','退款':'refund',
+        '订单':'order','菜单':'menu','点餐':'order food','主菜':'main course',
+        '饮料':'drink','水':'water','没有':'without','额外':'extra',
+        '账户':'account','号码':'number','密码':'password','系统':'system',
+        '今天':'today','明天':'tomorrow','昨天':'yesterday','下周':'next week',
+        '可以':'can','好的':'okay','不行':'cannot','等等':'wait','稍等':'hold on',
+        '什么':'what','为什么':'why','怎么':'how','哪里':'where','什么时候':'when',
+        '我觉得':'I think','我希望':'I hope','我需要':'I need','我想要':'I want',
+        '麻烦':'trouble','方便':'convenient','尽快':'as soon as possible','马上':'right away',
+        '已经':'already','正在':'currently','还没':'not yet','大概':'about','大约':'approximately',
+        '学习':'learn','练习':'practice','英语':'English','英文':'English','口语':'spoken English',
+        '翻译':'translate','句子':'sentence','单词':'word','阅读':'reading','新闻':'news',
+        '早上':'morning','下午':'afternoon','晚上':'evening','工作':'work','学校':'school',
+        '作业':'homework','邮件':'email','电话':'phone call','信息':'message','地址':'address',
+        '朋友':'friend','老师':'teacher','同事':'colleague','老板':'boss','家人':'family',
+        '喜欢':'like','知道':'know','理解':'understand','听':'listen','说':'speak','写':'write',
+        '读':'read','去':'go','来':'come','看':'look','给':'give','发送':'send','告诉':'tell',
+        '安排':'arrange','预约':'make an appointment','取消':'cancel','开始':'start','结束':'finish',
+        '重要':'important','清楚':'clear','快速':'quickly','慢一点':'slowly','再说一遍':'say it again'
+      };
+
+      // Grammar check patterns
+      var grammarIssues = [
+        { pattern: /\bi\s\b/, fix: 'I', tip: '句首的 "i" 应该大写为 "I"' },
+        { pattern: /\bdont\b/, fix: "don't", tip: '"dont" 应写为 "don\'t"' },
+        { pattern: /\bcant\b/, fix: "can't", tip: '"cant" 应写为 "can\'t"' },
+        { pattern: /\bim\b/, fix: "I'm", tip: '"im" 应写为 "I\'m"' },
+        { pattern: /\bits a\b/gi, fix: "it's a", tip: '"its a" 应写为 "it\'s a"（it is 的缩写）' },
+        { pattern: /\byour welcome\b/gi, fix: "you're welcome", tip: '"your welcome" 应写为 "you\'re welcome"' },
+        { pattern: /\bcould of\b/gi, fix: "could have", tip: '"could of" 应为 "could have"' },
+        { pattern: /\bwould of\b/gi, fix: "would have", tip: '"would of" 应为 "would have"' },
+        { pattern: /\bgonna\b/gi, fix: "going to", tip: '"gonna" 是口语缩写，正式场合建议用 "going to"' },
+        { pattern: /\bwanna\b/gi, fix: "want to", tip: '"wanna" 是口语缩写，正式场合建议用 "want to"' }
+      ];
+
+      // Common pronunciation-prone words for reminders
+      var trickyWords = {
+        'colonel':'/ˈkɜːrnəl/','queue':'/kjuː/','island':'/ˈaɪlənd/','debt':'/det/',
+        'receipt':'/rɪˈsiːt/','subtle':'/ˈsʌtəl/','Wednesday':'/ˈwenzdeɪ/','February':'/ˈfebrueri/',
+        'vegetable':'/ˈvedʒtəbl/','comfortable':'/ˈkʌmftəbl/','literature':'/ˈlɪtərətʃər/',
+        'schedule':'/ˈskedʒuːl/','entrepreneur':'/ˌɑːntrəprəˈnɜːr/','pronunciation':'/prəˌnʌnsiˈeɪʃn/'
+      };
+
+      var practiceState = {
+        active: false,
+        scenario: null,
+        turn: 0,
+        messages: [],
+        scores: { fluency: [], grammar: [], vocabulary: [], pronunciation: [] },
+        flowIndex: 0,
+        recognition: null,
+        recognizing: false
+      };
+
+      function detectChinese(text) {
+        var matches = text.match(/[\u4e00-\u9fa5]+/g);
+        return matches || [];
+      }
+
+      function translateZhChunks(chunks) {
+        var results = [];
+        chunks.forEach(function(chunk) {
+          var translated = '';
+          var remaining = chunk;
+          // Try longest match first
+          var sortedKeys = Object.keys(zhDict).sort(function(a,b) { return b.length - a.length; });
+          sortedKeys.forEach(function(key) {
+            var idx = remaining.indexOf(key);
+            while (idx !== -1) {
+              remaining = remaining.substring(0, idx) + ' ' + zhDict[key] + ' ' + remaining.substring(idx + key.length);
+              idx = remaining.indexOf(key, idx + zhDict[key].length + 2);
+            }
+          });
+          if (remaining.trim()) {
+            results.push({ zh: chunk, en: remaining.trim().replace(/\s+/g,' ') });
+          }
+        });
+        return results;
+      }
+
+      function polishEnglishSentence(text) {
+        text = String(text || '').replace(/\s+/g, ' ').trim();
+        if (!text) return '';
+        text = text.replace(/\bI want to English\b/gi, 'I want to practice English');
+        text = text.replace(/\bI need English\b/gi, 'I need to use English');
+        text = text.replace(/\bconfirm meeting time\b/gi, 'confirm the meeting time');
+        text = text.replace(/\bpractice spoken English\b/gi, 'practice spoken English');
+        text = text.replace(/\bplease help me\b/gi, 'please help me');
+        text = text.charAt(0).toUpperCase() + text.slice(1);
+        if (!/[.!?]$/.test(text)) text += '.';
+        return text;
+      }
+
+      function translateChineseToEnglish(text) {
+        var source = String(text || '').trim();
+        if (!source) return '';
+        var normalized = source.replace(/[，。！？、；：]/g, ' ').replace(/\s+/g, ' ').trim();
+        var directMap = [
+          { zh: /我想练习英语口语|我想练习英文口语/, en: 'I want to practice spoken English.' },
+          { zh: /我想学习英语|我想学习英文/, en: 'I want to learn English.' },
+          { zh: /我需要帮助/, en: 'I need help.' },
+          { zh: /我想确认会议时间/, en: 'I would like to confirm the meeting time.' },
+          { zh: /请再说一遍|麻烦再说一遍/, en: 'Could you please say that again?' },
+          { zh: /请说慢一点|麻烦说慢一点/, en: 'Could you please speak more slowly?' },
+          { zh: /我会尽快完成/, en: 'I will finish it as soon as possible.' },
+          { zh: /我还没完成/, en: 'I have not finished it yet.' },
+          { zh: /我想修改订单/, en: 'I would like to modify my order.' },
+          { zh: /我想退款/, en: 'I would like to request a refund.' },
+          { zh: /我想预约/, en: 'I would like to make an appointment.' },
+          { zh: /我想取消预约/, en: 'I would like to cancel the appointment.' }
+        ];
+        for (var i = 0; i < directMap.length; i++) {
+          if (directMap[i].zh.test(normalized)) return directMap[i].en;
+        }
+        var translated = normalized;
+        var sortedKeys = Object.keys(zhDict).sort(function(a,b) { return b.length - a.length; });
+        sortedKeys.forEach(function(key) {
+          translated = translated.split(key).join(' ' + zhDict[key] + ' ');
+        });
+        translated = translated.replace(/我/g, ' I ')
+          .replace(/你/g, ' you ')
+          .replace(/他/g, ' he ')
+          .replace(/她/g, ' she ')
+          .replace(/我们/g, ' we ')
+          .replace(/他们/g, ' they ')
+          .replace(/请/g, ' please ')
+          .replace(/吗/g, '')
+          .replace(/\s+/g, ' ')
+          .trim();
+        if (/[\u4e00-\u9fa5]/.test(translated)) {
+          translated = 'I want to say: ' + translated.replace(/[\u4e00-\u9fa5]+/g, '').replace(/\s+/g, ' ').trim();
+        }
+        return polishEnglishSentence(translated || source);
+      }
+
+      function escapeHTML(text) {
+        return String(text || '').replace(/[&<>"']/g, function(ch) {
+          return ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[ch];
+        });
+      }
+
+      function renderTranslationResult(targetId, source, english) {
+        var target = document.getElementById(targetId);
+        if (!target) return;
+        if (!english) {
+          target.className = 'translation-result-card empty';
+          target.textContent = '请先输入或说出中文内容';
+          return;
+        }
+        target.className = 'translation-result-card';
+        target.innerHTML =
+          '<div class="translation-label">英文表达</div>' +
+          '<div class="translation-en">' + escapeHTML(english) + '</div>' +
+          '<div class="translation-zh">原文：' + escapeHTML(source) + '</div>' +
+          '<div class="word-card-actions" style="margin-top:12px;">' +
+          '<button class="word-btn speak" data-translation-speak="' + escapeHTML(english) + '">朗读</button>' +
+          '<button class="word-btn add" data-translation-add="' + escapeHTML(english) + '" data-translation-meaning="' + escapeHTML(source) + '">加入词库</button>' +
+          '</div>';
+      }
+
+      function checkGrammar(text) {
+        var issues = [];
+        grammarIssues.forEach(function(rule) {
+          if (rule.pattern.test(text)) {
+            issues.push(rule.tip);
+          }
+        });
+        return issues;
+      }
+
+      function checkPronunciation(text) {
+        var tips = [];
+        var words = text.toLowerCase().match(/\b[a-z]+\b/g) || [];
+        words.forEach(function(w) {
+          if (trickyWords[w]) {
+            tips.push(w + ' ' + trickyWords[w]);
+          }
+        });
+        return tips;
+      }
+
+      function speakText(text) {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          var u = new SpeechSynthesisUtterance(text);
+          u.lang = 'en-US';
+          u.rate = 0.88;
+          u.pitch = 1.0;
+          window.speechSynthesis.speak(u);
+        }
+      }
+
+      function getAIReply(userText, scenario) {
+        var script = scenarioScripts[scenario];
+        var lower = userText.toLowerCase();
+        for (var i = practiceState.flowIndex; i < script.flows.length; i++) {
+          var flow = script.flows[i];
+          var matched = flow.keywords.some(function(k) { return lower.indexOf(k) !== -1; });
+          if (matched) {
+            practiceState.flowIndex = i + 1;
+            return flow.reply;
+          }
+        }
+        // If we've exhausted the flow, try wrapping up
+        if (practiceState.turn >= 4) {
+          return script.closer;
+        }
+        return script.fallback;
+      }
+
+      function addBubble(role, text, feedback) {
+        var bubbles = document.getElementById('chatBubbles');
+        var b = document.createElement('div');
+        b.className = 'bubble ' + role;
+        b.textContent = text;
+        if (feedback) {
+          var fb = document.createElement('div');
+          fb.className = 'bubble-feedback';
+          fb.innerHTML = feedback;
+          b.appendChild(fb);
+        }
+        bubbles.appendChild(b);
+        bubbles.scrollTop = bubbles.scrollHeight;
+      }
+
+      function addTranslationPop(translations) {
+        if (!translations.length) return;
+        var bubbles = document.getElementById('chatBubbles');
+        var pop = document.createElement('div');
+        pop.className = 'translation-pop';
+        var html = '<div class="trans-label">🔤 中文翻译 & 发音</div>';
+        translations.forEach(function(t) {
+          html += '<div><span class="trans-en">' + t.en + '</span> <span class="trans-pinyin">(' + t.zh + ')</span></div>';
+        });
+        pop.innerHTML = html;
+        bubbles.appendChild(pop);
+        bubbles.scrollTop = bubbles.scrollHeight;
+      }
+
+      function processUserInput(text) {
+        if (!text || !practiceState.active) return;
+        practiceState.turn++;
+        document.getElementById('turnCount').textContent = '第 ' + (practiceState.turn + 1) + ' 轮';
+
+        // Detect Chinese characters
+        var zhChunks = detectChinese(text);
+        var translations = translateZhChunks(zhChunks);
+
+        // Check grammar
+        var grammarIssues = checkGrammar(text);
+        // Check pronunciation
+        var pronTips = checkPronunciation(text);
+
+        // Build feedback
+        var feedbackParts = [];
+        if (translations.length) feedbackParts.push('🔤 已翻译中文部分');
+        if (grammarIssues.length) feedbackParts.push('✏️ ' + grammarIssues.join('；'));
+        if (pronTips.length) feedbackParts.push('🗣️ 发音提示：' + pronTips.slice(0,2).join('，'));
+
+        addBubble('learner', text, feedbackParts.length ? feedbackParts.join('<br>') : null);
+
+        // Show translation popup
+        if (translations.length) {
+          addTranslationPop(translations);
+          // Speak the translated English
+          var translatedEn = translations.map(function(t) { return t.en; }).join('. ');
+          speakText(translatedEn);
+        }
+
+        // Score this turn
+        var turnScore = scoreTurn(text, grammarIssues, pronTips, translations);
+        practiceState.scores.fluency.push(turnScore.fluency);
+        practiceState.scores.grammar.push(turnScore.grammar);
+        practiceState.scores.vocabulary.push(turnScore.vocabulary);
+        practiceState.scores.pronunciation.push(turnScore.pronunciation);
+
+        // Save message
+        practiceState.messages.push({ role: 'learner', text: text, feedback: feedbackParts.join(' | '), translations: translations });
+
+        // Get AI reply
+        setTimeout(function() {
+          var aiReply = getAIReply(text, practiceState.scenario);
+          addBubble('teacher', aiReply);
+          speakText(aiReply);
+          practiceState.messages.push({ role: 'teacher', text: aiReply });
+          document.getElementById('voiceStatus').textContent = '请继续回答，或点击麦克风说话';
+        }, 800);
+      }
+
+      function scoreTurn(text, grammarIssues, pronTips, translations) {
+        var wordCount = (text.match(/\b\w+\b/g) || []).length;
+        // Fluency: based on word count and length
+        var fluency = Math.min(100, Math.round(wordCount * 8 + 40));
+        if (wordCount < 3) fluency = Math.max(20, fluency - 30);
+        // Grammar: start high, deduct for issues
+        var grammar = Math.max(30, 100 - grammarIssues.length * 15);
+        // Vocabulary: reward diverse words
+        var uniqueWords = new Set((text.toLowerCase().match(/\b[a-z]+\b/g) || []));
+        var vocabulary = Math.min(100, Math.round(uniqueWords.size * 12 + 35));
+        // Pronunciation: deduct for tricky words found (room to improve)
+        var pronunciation = Math.max(40, 100 - pronTips.length * 10);
+        return { fluency: fluency, grammar: grammar, vocabulary: vocabulary, pronunciation: pronunciation };
+      }
+
+      function initSpeechRecognition() {
+        var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SR) return null;
+        var rec = new SR();
+        rec.lang = 'en-US';
+        rec.continuous = false;
+        rec.interimResults = false;
+        rec.onstart = function() {
+          practiceState.recognizing = true;
+          var micBtn = document.getElementById('micBtn');
+          micBtn.classList.add('recording');
+          micBtn.textContent = '🔴';
+          document.getElementById('voiceStatus').textContent = '正在聆听... 请用英文回答';
+          document.getElementById('voiceStatus').classList.add('listening');
+        };
+        rec.onresult = function(event) {
+          var transcript = event.results[0][0].transcript;
+          document.getElementById('textFallback').value = '';
+          processUserInput(transcript);
+        };
+        rec.onerror = function(event) {
+          document.getElementById('voiceStatus').textContent = '语音识别出错：' + event.error + '，可手动输入';
+          document.getElementById('voiceStatus').classList.remove('listening');
+        };
+        rec.onend = function() {
+          practiceState.recognizing = false;
+          var micBtn = document.getElementById('micBtn');
+          micBtn.classList.remove('recording');
+          micBtn.textContent = '🎤';
+          document.getElementById('voiceStatus').classList.remove('listening');
+          if (!document.getElementById('voiceStatus').textContent.includes('请继续')) {
+            document.getElementById('voiceStatus').textContent = '点击麦克风开始说话';
+          }
+        };
+        return rec;
+      }
+
+      function startPracticeSession() {
+        var scenarioVal = document.getElementById('scenario').value;
+        var script = scenarioScripts[scenarioVal];
+        if (!script) return;
+
+        practiceState.active = true;
+        practiceState.scenario = scenarioVal;
+        practiceState.turn = 0;
+        practiceState.messages = [];
+        practiceState.scores = { fluency: [], grammar: [], vocabulary: [], pronunciation: [] };
+        practiceState.flowIndex = 0;
+
+        document.getElementById('practiceStartRow').classList.add('hidden');
+        document.getElementById('voiceChatWrap').classList.remove('hidden');
+        document.getElementById('practiceEndRow').classList.remove('hidden');
+        document.getElementById('scoreDisplay').innerHTML = '';
+        document.getElementById('chatBubbles').innerHTML = '';
+        document.getElementById('turnCount').textContent = '第 1 轮';
+
+        // Initialize speech recognition
+        practiceState.recognition = initSpeechRecognition();
+
+        // AI teacher opens the conversation
+        addBubble('teacher', script.opener);
+        speakText(script.opener);
+        practiceState.messages.push({ role: 'teacher', text: script.opener });
+        document.getElementById('voiceStatus').textContent = '请点击麦克风回答，或直接输入文字';
+      }
+
+      function endPracticeSession() {
+        if (!practiceState.active) return;
+        practiceState.active = false;
+
+        // Stop recognition
+        if (practiceState.recognition && practiceState.recognizing) {
+          practiceState.recognition.stop();
+        }
+        // Stop TTS
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+
+        // Calculate final scores
+        var avg = function(arr) { return arr.length ? Math.round(arr.reduce(function(a,b){return a+b;},0) / arr.length) : 0; };
+        var finalScores = {
+          fluency: avg(practiceState.scores.fluency),
+          grammar: avg(practiceState.scores.grammar),
+          vocabulary: avg(practiceState.scores.vocabulary),
+          pronunciation: avg(practiceState.scores.pronunciation)
+        };
+        var totalScore = Math.round((finalScores.fluency + finalScores.grammar + finalScores.vocabulary + finalScores.pronunciation) / 4);
+
+        // Determine grade color
+        var gradeColor = totalScore >= 80 ? '#2d8c63' : totalScore >= 60 ? '#f4b23b' : '#e74c3c';
+        var gradeText = totalScore >= 80 ? '优秀' : totalScore >= 60 ? '良好' : '继续努力';
+
+        // Render score card
+        var dims = [
+          { name: '流利度', val: finalScores.fluency, color: '#d86f23' },
+          { name: '语法', val: finalScores.grammar, color: '#2d8c63' },
+          { name: '词汇', val: finalScores.vocabulary, color: '#f4b23b' },
+          { name: '发音', val: finalScores.pronunciation, color: '#8b5cf6' }
+        ];
+        var dimsHtml = dims.map(function(d) {
+          return '<div class="score-dim"><span>' + d.name + '</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:' + d.val + '%;background:' + d.color + ';"></div></div><span>' + d.val + '</span></div>';
+        }).join('');
+
+        document.getElementById('scoreDisplay').innerHTML =
+          '<div class="practice-score-card">' +
+          '<div class="score-total">' +
+          '<div class="score-ring-big" style="background:' + gradeColor + ';">' + totalScore + '</div>' +
+          '<div><div style="font-size:16px;font-weight:700;">' + gradeText + '</div><div style="font-size:12px;color:var(--muted);">综合得分</div></div>' +
+          '<div class="score-dims" style="margin-left:auto;">' + dimsHtml + '</div>' +
+          '</div>' +
+          '<div style="font-size:13px;color:var(--muted);">共 ' + practiceState.turn + ' 轮对话 · ' + practiceState.messages.filter(function(m){return m.role==='learner';}).length + ' 次发言</div>' +
+          '</div>';
+
+        // Save to history
+        var script = scenarioScripts[practiceState.scenario];
+        var historyItem = {
+          id: Date.now(),
+          scenario: script.name,
+          date: new Date().toLocaleString('zh-CN'),
+          score: totalScore,
+          scores: finalScores,
+          grade: gradeText,
+          turns: practiceState.turn,
+          messages: practiceState.messages
+        };
+
+        var phistory = JSON.parse(localStorage.getItem('practiceHistory') || '[]');
+        phistory.unshift(historyItem);
+        if (phistory.length > 50) phistory = phistory.slice(0, 50);
+        localStorage.setItem('practiceHistory', JSON.stringify(phistory));
+
+        // Mark today's practice as done (compatible with existing completion system)
+        localStorage.setItem('localDone:场景演练', new Date().toISOString());
+        var doneHistory = getDoneHistory();
+        doneHistory['场景演练'] = doneHistory['场景演练'] || [];
+        if (doneHistory['场景演练'].indexOf(todayKey) === -1) doneHistory['场景演练'].push(todayKey);
+        saveDoneHistory(doneHistory);
+        updateCompletion();
+        renderPracticeHistory();
+
+        document.getElementById('voiceChatWrap').classList.add('hidden');
+        document.getElementById('practiceEndRow').classList.add('hidden');
+        document.getElementById('practiceStartRow').classList.remove('hidden');
+        document.getElementById('scenario').value = practiceState.scenario;
+      }
+
+      function updatePracticeStatus() {
+        var doneHistory = getDoneHistory();
+        var done = localStorage.getItem('localDone:场景演练') || (doneHistory['场景演练'] || []).indexOf(todayKey) !== -1;
+        var el = document.getElementById('practiceStatus');
+        if (done) {
+          el.textContent = '✅ 今日演练已完成';
+          el.style.color = 'var(--accent2)';
+        } else {
+          el.textContent = '尚未记录今日演练完成';
+          el.style.color = '';
+        }
+      }
+
+      function renderPracticeHistory() {
+        var history = JSON.parse(localStorage.getItem('practiceHistory') || '[]');
+        document.getElementById('historyCount').textContent = history.length + ' 条';
+        var container = document.getElementById('practiceHistoryItems');
+        if (!history.length) {
+          container.innerHTML = '<div class="text-sm text-muted" style="padding:16px;text-align:center;">暂无演练记录，开始一次语音对话吧！</div>';
+          return;
+        }
+        container.innerHTML = history.map(function(item) {
+          var scoreColor = item.score >= 80 ? '#2d8c63' : item.score >= 60 ? '#f4b23b' : '#e74c3c';
+          return '<div class="practice-history-item" data-id="' + item.id + '">' +
+            '<div class="phi-top"><span class="phi-name">' + item.scenario + '</span>' +
+            '<span class="phi-score" style="background:' + scoreColor + '22;color:' + scoreColor + ';">' + item.score + '分</span></div>' +
+            '<div class="phi-date">' + item.date + ' · ' + item.turns + ' 轮 · ' + item.grade + '</div>' +
+            '</div>';
+        }).join('');
+
+        // Add click handlers for detail toggle
+        container.querySelectorAll('.practice-history-item').forEach(function(el) {
+          el.addEventListener('click', function() {
+            var id = parseInt(this.getAttribute('data-id'));
+            var existing = this.querySelector('.practice-history-detail');
+            if (existing) { existing.remove(); return; }
+            var item = history.find(function(h) { return h.id === id; });
+            if (!item) return;
+            var detail = document.createElement('div');
+            detail.className = 'practice-history-detail';
+            var html = '';
+            item.messages.forEach(function(m) {
+              var prefix = m.role === 'teacher' ? '🦊 老师' : '🐰 你';
+              html += '<div><strong>' + prefix + ':</strong> ' + m.text + '</div>';
+              if (m.feedback) html += '<div style="color:var(--muted);font-size:11px;">→ ' + m.feedback + '</div>';
+            });
+            detail.innerHTML = html;
+            this.appendChild(detail);
+          });
+        });
+      }
+
+      // Bind practice events
+      document.getElementById('startPractice').addEventListener('click', startPracticeSession);
+      document.getElementById('endPractice').addEventListener('click', endPracticeSession);
+      document.getElementById('cancelPractice').addEventListener('click', function() {
+        practiceState.active = false;
+        if (practiceState.recognition && practiceState.recognizing) practiceState.recognition.stop();
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        document.getElementById('voiceChatWrap').classList.add('hidden');
+        document.getElementById('practiceEndRow').classList.add('hidden');
+        document.getElementById('practiceStartRow').classList.remove('hidden');
+      });
+
+      // Mic button - tap to start/stop
+      document.getElementById('micBtn').addEventListener('click', function() {
+        if (!practiceState.active) return;
+        if (!practiceState.recognition) {
+          document.getElementById('voiceStatus').textContent = '当前浏览器不支持语音识别，请手动输入';
+          return;
+        }
+        if (practiceState.recognizing) {
+          practiceState.recognition.stop();
+        } else {
+          try {
+            practiceState.recognition.start();
+          } catch(e) {
+            document.getElementById('voiceStatus').textContent = '请稍后再试';
+          }
+        }
+      });
+
+      // Text fallback input
+      function submitTypedPracticeText() {
+        var input = document.getElementById('textFallback');
+        var text = input.value.trim();
+        if (text && practiceState.active) {
+          input.value = '';
+          processUserInput(text);
+        }
+      }
+
+      document.getElementById('textFallback').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && practiceState.active) {
+          submitTypedPracticeText();
+        }
+      });
+      document.getElementById('textSendBtn').addEventListener('click', submitTypedPracticeText);
+
+      // Handwrite and voice translation
+      var lastVoiceTranslation = '';
+
+      function runHandwriteTranslation() {
+        var input = document.getElementById('handwriteInput');
+        var source = input.value.trim();
+        var english = translateChineseToEnglish(source);
+        lastVoiceTranslation = english;
+        renderTranslationResult('handwriteResult', source, english);
+        if (english) speakText(english);
+      }
+
+      var handwriteRecognition = null;
+      var handwriteRecognizing = false;
+
+      function initHandwriteRecognition() {
+        var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SR) return null;
+        var rec = new SR();
+        rec.lang = 'zh-CN';
+        rec.continuous = false;
+        rec.interimResults = false;
+        rec.onstart = function() {
+          handwriteRecognizing = true;
+          document.getElementById('handwriteMicBtn').classList.add('recording');
+          document.getElementById('handwriteMicBtn').textContent = '🔴';
+          document.getElementById('handwriteVoiceStatus').textContent = '正在听中文，请说出要翻译的内容';
+          document.getElementById('handwriteVoiceStatus').classList.add('listening');
+        };
+        rec.onresult = function(event) {
+          var transcript = event.results[0][0].transcript;
+          var input = document.getElementById('handwriteInput');
+          input.value = input.value ? input.value + transcript : transcript;
+          document.getElementById('voiceTranscript').textContent = transcript;
+          var english = translateChineseToEnglish(input.value.trim());
+          lastVoiceTranslation = english;
+          renderTranslationResult('handwriteResult', input.value.trim(), english);
+          document.getElementById('handwriteVoiceStatus').textContent = '已识别：' + transcript;
+          if (english) speakText(english);
+        };
+        rec.onerror = function(event) {
+          document.getElementById('handwriteVoiceStatus').textContent = '语音识别出错：' + event.error + '，可以手动输入中文';
+          document.getElementById('handwriteVoiceStatus').classList.remove('listening');
+        };
+        rec.onend = function() {
+          handwriteRecognizing = false;
+          document.getElementById('handwriteMicBtn').classList.remove('recording');
+          document.getElementById('handwriteMicBtn').textContent = '🎤';
+          document.getElementById('handwriteVoiceStatus').classList.remove('listening');
+          if (!document.getElementById('handwriteInput').value) {
+            document.getElementById('handwriteVoiceStatus').textContent = '点击麦克风语音输入中文，或在下方手写输入';
+          } else {
+            document.getElementById('handwriteVoiceStatus').textContent = '语音输入完成，可继续输入或点翻译';
+          }
+        };
+        return rec;
+      }
+
+      document.getElementById('translateHandwrite').addEventListener('click', runHandwriteTranslation);
+      document.getElementById('handwriteInput').addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') runHandwriteTranslation();
+      });
+      document.getElementById('clearHandwrite').addEventListener('click', function() {
+        document.getElementById('handwriteInput').value = '';
+        document.getElementById('voiceTranscript').textContent = '还没有识别内容';
+        lastVoiceTranslation = '';
+        renderTranslationResult('handwriteResult', '', '');
+        document.getElementById('handwriteVoiceStatus').textContent = '点击麦克风语音输入中文，或在下方手写输入';
+      });
+      document.getElementById('handwriteMicBtn').addEventListener('click', function() {
+        if (!handwriteRecognition) handwriteRecognition = initHandwriteRecognition();
+        if (!handwriteRecognition) {
+          document.getElementById('handwriteVoiceStatus').textContent = '当前浏览器不支持语音识别，可以手动输入中文';
+          return;
+        }
+        if (handwriteRecognizing) {
+          handwriteRecognition.stop();
+        } else {
+          try {
+            handwriteRecognition.start();
+          } catch(e) {
+            document.getElementById('handwriteVoiceStatus').textContent = '请稍后再试';
+          }
+        }
+      });
+      document.getElementById('repeatVoiceTranslation').addEventListener('click', function() {
+        if (lastVoiceTranslation) speakText(lastVoiceTranslation);
+      });
+      document.addEventListener('click', function(e) {
+        var speak = e.target.getAttribute('data-translation-speak');
+        var add = e.target.getAttribute('data-translation-add');
+        if (speak) speakText(speak);
+        if (add) addWord(add, e.target.getAttribute('data-translation-meaning'), '语句', '翻译练习');
+      });
+
+      // Init practice status and history on load
+      updatePracticeStatus();
+      renderPracticeHistory();
+
+      // Data analysis
+      function startOfWeek(date) {
+        var d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        var day = d.getDay() || 7;
+        d.setDate(d.getDate() - day + 1);
+        d.setHours(0, 0, 0, 0);
+        return d;
+      }
+
+      function countSince(dates, startDate, endDate) {
+        return dates.filter(function(dateText) {
+          var date = new Date(dateText + 'T00:00:00');
+          return date >= startDate && date <= endDate;
+        }).length;
+      }
+
+      function renderAnalysis(period) {
+        var history = getDoneHistory();
+        var now = new Date();
+        var start, end, periodName;
+        if (period === 'week') {
+          start = startOfWeek(now);
+          end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+          periodName = '本周';
+        } else {
+          start = new Date(now.getFullYear(), now.getMonth(), 1);
+          end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+          periodName = '本月';
+        }
+
+        var items = ['每日单词', '每日阅读', '每日新闻', '场景演练'];
+        var counts = items.map(function(name) {
+          return countSince(history[name] || [], start, end);
+        });
+        var totalDays = new Set();
+        items.forEach(function(name) {
+          (history[name] || []).forEach(function(d) {
+            var date = new Date(d + 'T00:00:00');
+            if (date >= start && date <= end) totalDays.add(d);
+          });
+        });
+
+        var maxCount = period === 'week' ? 7 : 31;
+        var rate = Math.round((totalDays.size / maxCount) * 100);
+        var totalCount = counts.reduce(function(a, b) { return a + b; }, 0);
+        var maxPossible = items.length * maxCount;
+        var overallRate = Math.round((totalCount / maxPossible) * 100);
+        var sortedDays = Array.from(totalDays).sort();
+        var bestStreak = 0;
+        var currentStreak = 0;
+        var previousTime = null;
+        sortedDays.forEach(function(dayText) {
+          var time = new Date(dayText + 'T00:00:00').getTime();
+          currentStreak = previousTime && time - previousTime === 86400000 ? currentStreak + 1 : 1;
+          bestStreak = Math.max(bestStreak, currentStreak);
+          previousTime = time;
+        });
+
+        document.getElementById('totalDays').textContent = totalDays.size;
+        document.getElementById('completionRate').textContent = overallRate + '%';
+        document.getElementById('bestStreak').textContent = bestStreak;
+        document.getElementById('totalWords').textContent = savedWords.length;
+
+        // Find best
+        var best = Math.max.apply(null, counts);
+        var bestItem = items[counts.indexOf(best)] || '无';
+        var suggestions = [];
+        if (counts[0] < best) suggestions.push('单词');
+        if (counts[1] < best) suggestions.push('阅读');
+        if (counts[2] < best) suggestions.push('新闻');
+        if (counts[3] < best) suggestions.push('演练');
+
+        var text = periodName + '打卡' + totalDays.size + '天，';
+        if (bestItem !== '无') text += bestItem + '完成最好';
+        if (suggestions.length > 0) text += '，建议加强' + suggestions.join('和');
+        text += '。';
+        document.getElementById('analysisText').textContent = text;
+        document.getElementById('heatmapPeriod').textContent = periodName;
+
+        var reviewGrid = document.getElementById('sectionReviewGrid');
+        var shortNames = ['单词', '阅读', '新闻', '演练'];
+        var nickIcons = [
+          'assets/icons/nick_stand.png',
+          'assets/icons/nick_cool.png',
+          'assets/icons/nick_sly.png',
+          'assets/icons/nick_run.png'
+        ];
+        var dimensionLabels = ['发音准确', '阅读感情', '单词记忆', '语法熟练'];
+        var dimensionMap = [
+          [78, 55, 92, 66],
+          [64, 86, 58, 72],
+          [82, 70, 62, 68],
+          [74, 64, 60, 88]
+        ];
+        reviewGrid.innerHTML = '';
+        items.forEach(function(name, index) {
+          var itemRate = Math.round((counts[index] / maxCount) * 100);
+          var review = document.createElement('div');
+          review.className = 'section-review-card';
+          var reviewText = counts[index] === best
+            ? '优势版块，保持节奏并增加复述。'
+            : (counts[index] === 0 ? '本周期未打卡，建议先完成一次。' : '仍有提升空间，安排固定复盘时间。');
+          var dims = dimensionLabels.map(function(label, dimIndex) {
+            var value = Math.min(100, Math.round(dimensionMap[index][dimIndex] * 0.45 + itemRate * 0.55));
+            return '<div class="review-dimension"><span>' + label + '</span><div class="dimension-bar"><span style="width:' + value + '%"></span></div><strong>' + value + '</strong></div>';
+          }).join('');
+          review.innerHTML = '<div class="section-review-title"><span><img class="section-review-nick" src="' + nickIcons[index] + '" alt="Nick"> ' + shortNames[index] + '</span><span>' + itemRate + '%</span></div><div class="section-review-count">' + counts[index] + '</div><div class="section-review-text">' + reviewText + '</div><div class="review-dimensions">' + dims + '</div>';
+          reviewGrid.appendChild(review);
+        });
+
+        // Heatmap
+        var heatmap = document.getElementById('heatmap');
+        heatmap.innerHTML = '';
+        var days;
+        if (period === 'week') {
+          days = 7;
+        } else {
+          // Show full calendar month, padded to complete weeks for grid alignment
+          var daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+          var firstWeekday = new Date(now.getFullYear(), now.getMonth(), 1).getDay() || 7;
+          days = Math.ceil((daysInMonth + firstWeekday - 1) / 7) * 7;
+        }
+        for (var i = 0; i < days; i++) {
+          var d = new Date(start);
+          d.setDate(d.getDate() + i - (period === 'month' ? ((new Date(start).getDay() || 7) - 1) : 0));
+          var dateStr = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+          var dayEl = document.createElement('div');
+          dayEl.className = 'heatmap-day';
+          if (period === 'month' && (d.getMonth() !== now.getMonth())) {
+            dayEl.style.opacity = '0.2';
+          }
+          var count = 0;
+          items.forEach(function(name) {
+            if ((history[name] || []).indexOf(dateStr) !== -1) count++;
+          });
+          if (count > 0) dayEl.className += ' level-' + Math.min(count, 4);
+          heatmap.appendChild(dayEl);
+        }
+      }
+
+      document.querySelectorAll('.data-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          document.querySelectorAll('.data-tab').forEach(function(t) { t.classList.remove('active'); });
+          this.classList.add('active');
+          renderAnalysis(this.dataset.period);
+        });
+      });
+
+      // Reset data
+      document.getElementById('resetData').addEventListener('click', function() {
+        if (!confirm('确定要重置所有数据吗？此操作不可恢复。')) return;
+        localStorage.removeItem('nickWorkbenchWords');
+        localStorage.removeItem('nickDailyWords');
+        localStorage.removeItem('localDone:每日单词');
+        localStorage.removeItem('localDone:每日阅读');
+        localStorage.removeItem('localDone:每日新闻');
+        localStorage.removeItem('localDone:场景演练');
+        localStorage.removeItem('localDoneHistory');
+        savedWords = [];
+        renderDailyWords();
+        renderSavedWords();
+        document.getElementById('vocabTable').innerHTML = '<tr><td colspan="5" class="text-center text-muted">暂无数据</td></tr>';
+        Object.keys(completionMap).forEach(function(name) {
+          document.getElementById(completionMap[name]).textContent = '尚未记录今日' + name + '完成';
+        });
+        updateProgress();
+        updateStats();
+        renderAnalysis('week');
+      });
+
+      // Refresh
+      document.getElementById('refreshBtn').addEventListener('click', function() {
+        location.reload();
+      });
+
+      // Load RSS content
+      function escapeHtml(text) {
+        return String(text || '').replace(/[&<>"']/g, function(ch) {
+          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch];
+        });
+      }
+
+      function renderReadingContent(reading) {
+        if (!reading || !reading.title) return;
+        document.getElementById('readingTitle').textContent = reading.title;
+        var summary = reading.summary || '';
+        var keywords = (reading.keywords || []).slice(0, 5);
+        var html = escapeHtml(summary);
+        keywords.forEach(function(word) {
+          var reg = new RegExp('\\b(' + word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')\\b', 'ig');
+          html = html.replace(reg, '<button class="word-chip" data-word="' + escapeHtml(word.toLowerCase()) + '" data-meaning="' + escapeHtml(word + ': 关键词') + '">$1</button>');
+        });
+        document.getElementById('readingText').innerHTML = html;
+        document.querySelectorAll('#readingText .word-chip').forEach(function(chip) {
+          chip.addEventListener('click', function() {
+            var word = chip.getAttribute('data-word');
+            var meaning = chip.getAttribute('data-meaning');
+            document.getElementById('meaningPop').textContent = meaning + ' - 已加入词库';
+            addWord(word, meaning, inferVocabType(word), '每日阅读');
+          });
+        });
+      }
+
+      function renderNewsContent(news) {
+        if (!news || !news.title) return;
+        document.getElementById('newsTitle').textContent = news.title;
+        document.getElementById('newsSubtitle').textContent = news.subtitleZh || '中文字幕';
+      }
+
+      fetch('data/daily-content.json?v=' + new Date().toISOString().slice(0, 10))
+        .then(function(response) {
+          if (!response.ok) throw new Error('Content not available');
+          return response.json();
+        })
+        .then(function(data) {
+          renderReadingContent(data.reading);
+          renderNewsContent(data.news);
+        })
+        .catch(function() {});
+
+      // Init
+      updateCompletion();
+      updateStats();
+      loadProfileCard();
+      renderAnalysis('week');
+    })();
+  </script>
+</body>
+</html>
