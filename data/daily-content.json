@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-08-06T07:49:33.536Z",
+  "generatedAt": "2026-08-07T05:01:10.086Z",
   "reading": {
-    "source": "BBC Technology",
-    "title": "How tech is helping in the battle against wildfires",
-    "summary": "Tech is being used to watch for wildfires but firefighters are still needed to put them out.",
-    "link": "https://www.bbc.co.uk/news/articles/c62enveg1dpo?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Tue, 04 Aug 2026 23:21:47 GMT",
+    "source": "NPR Business",
+    "title": "Capital One says it closed Trump Organization accounts over money-laundering concerns",
+    "summary": "The bank is asking a judge to permanently dismiss a lawsuit from Trump-affiliated businesses, arguing a monthslong internal review — not the Jan. 6 riot — explains why hundreds of accounts were shut down in 2021.",
+    "link": "https://www.npr.org/2026/08/02/g-s1-136834/capital-one-trump-bank-anti-money-laundering",
+    "pubDate": "Sun, 02 Aug 2026 14:31:34 -0400",
     "keywords": [
-      "tech",
-      "wildfires",
-      "helping",
-      "battle",
-      "against",
-      "being",
-      "used",
-      "watch"
+      "accounts",
+      "capital",
+      "says",
+      "closed",
+      "trump",
+      "organization",
+      "over",
+      "money-laundering"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "After deadly Kyiv strike, Ukraine warns interceptor shortage is costing lives",
-    "summary": "Without Patriot interceptors, Ukraine's skies are wide open and people are fully exposed to Russia's missile barrages.",
-    "link": "https://www.bbc.co.uk/news/articles/cyvlgq2gp2eo?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Wed, 05 Aug 2026 18:19:51 GMT",
+    "source": "The Guardian World",
+    "title": "Trump unbound: the making of an imperial presidency – podcast",
+    "summary": "Donald Trump’s second term is unlike his first. The politicians who challenged him are gone. The lawyers who once pushed back now choose their battles. What remains is an imperial president with almost no internal checks, using executive power to reshape everything from the economy, immigration and even the presidency itself. Few journalists have covered Trump as closely as the New York Times journalist Jonathan Swan. Jonathan Freedland speaks to him about how the president has consolidated such power – and what it could mean for the US and the world Watch Jonathan Freedland on our new Politics Weekly YouTube channel You can find Jonathan Swan and Maggie Habermans’ book Regime Change here Send your questions and feedback to politicsweeklyamerica@theguardian.com Continue reading...",
+    "link": "https://www.theguardian.com/politics/audio/2026/aug/07/trump-unbound-the-making-of-an-imperial-presidency-podcast",
+    "pubDate": "Fri, 07 Aug 2026 04:00:06 GMT",
     "keywords": [
-      "ukraine",
-      "deadly",
-      "kyiv",
-      "strike",
-      "warns",
-      "interceptor",
-      "shortage",
-      "costing"
+      "jonathan",
+      "trump",
+      "imperial",
+      "presidency",
+      "what",
+      "president",
+      "power",
+      "swan"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
