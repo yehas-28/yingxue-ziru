@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-08-08T23:03:36.039Z",
+  "generatedAt": "2026-08-09T23:04:41.236Z",
   "reading": {
-    "source": "BBC Technology",
-    "title": "Anthropic AI used fake profiles to target people in hack then hid the evidence",
-    "summary": "The UK's AI Safety Institute said recent behaviour from Anthropic and OpenAI models was malicious and unprecedented.",
-    "link": "https://www.bbc.co.uk/news/articles/c1w1lvn7d9go?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Wed, 05 Aug 2026 09:24:18 GMT",
+    "source": "NPR Business",
+    "title": "SpaceX's revenue rises as its once-soaring stock price drifts back to Earth",
+    "summary": "On their first earnings call since SpaceX's June public offering, executives said the company is pouring funds into rocket development, Starlink satellites and AI.",
+    "link": "https://www.npr.org/2026/08/04/nx-s1-5918536/spacex-first-earnings-report-since-ipo",
+    "pubDate": "Tue, 04 Aug 2026 18:02:03 -0400",
     "keywords": [
-      "anthropic",
-      "used",
-      "fake",
-      "profiles",
-      "target",
-      "people",
-      "hack",
-      "then"
+      "spacex",
+      "revenue",
+      "rises",
+      "once-soaring",
+      "stock",
+      "price",
+      "drifts",
+      "back"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "He's been frozen on Everest for 30 years, now 'Green Boots' may finally be coming home",
-    "summary": "For decades, an Indian man's lime shoes have been a grim trail marker for many climbing the world's highest peak.",
-    "link": "https://www.bbc.co.uk/news/articles/cz05xn35xj7o?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Sat, 08 Aug 2026 00:29:27 GMT",
+    "source": "NPR World",
+    "title": "Solar eclipse to occur next week. Here is what to know",
+    "summary": "It will be visible in parts of the U.S. on Wednesday.",
+    "link": "https://www.npr.org/2026/08/08/nx-s1-5925939/solar-eclipse-august-2026",
+    "pubDate": "Sat, 08 Aug 2026 20:56:21 -0400",
     "keywords": [
-      "frozen",
-      "everest",
-      "years",
-      "green",
-      "boots",
-      "finally",
-      "coming",
-      "home"
+      "solar",
+      "eclipse",
+      "occur",
+      "next",
+      "week",
+      "here",
+      "what",
+      "know"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
