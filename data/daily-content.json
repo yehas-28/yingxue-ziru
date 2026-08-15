@@ -1,37 +1,39 @@
 {
-  "generatedAt": "2026-08-14T22:53:59.562Z",
+  "generatedAt": "2026-08-15T22:50:58.997Z",
   "reading": {
     "source": "BBC Technology",
     "title": "Tech Life",
-    "summary": "What do we need to know about agentic AI?",
-    "link": "https://www.bbc.co.uk/sounds/play/w3ct8jy6?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Tue, 28 Jul 2026 20:00:00 GMT",
+    "summary": "Dogs have a great sense of smell. Now machines are being trained to sniff out odours.",
+    "link": "https://www.bbc.co.uk/sounds/play/w3ct8jy5?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Tue, 21 Jul 2026 20:00:00 GMT",
     "keywords": [
       "tech",
       "life",
-      "what",
-      "need",
-      "know",
-      "agentic"
+      "dogs",
+      "great",
+      "sense",
+      "smell",
+      "machines",
+      "being"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "Air India to test all pilots for banned substances",
-    "summary": "It comes after one of its planes suddenly lost altitude last week, with a number of passengers injured.",
-    "link": "https://www.bbc.co.uk/news/articles/c2352jyvm5xo?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Thu, 13 Aug 2026 16:52:15 GMT",
+    "source": "NPR World",
+    "title": "Jason Arday, Cambridge professor accused of plagiarism, is found dead",
+    "summary": "Arday was 37 when he became Cambridge's youngest Black professor in 2023. He was found unresponsive Friday at a home in southwest London.",
+    "link": "https://www.npr.org/2026/08/15/nx-s1-5932488/jason-arday-dead",
+    "pubDate": "Sat, 15 Aug 2026 13:04:43 -0400",
     "keywords": [
-      "india",
-      "test",
-      "pilots",
-      "banned",
-      "substances",
-      "comes",
-      "planes",
-      "suddenly"
+      "arday",
+      "cambridge",
+      "professor",
+      "found",
+      "jason",
+      "accused",
+      "plagiarism",
+      "dead"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
