@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-08-15T22:50:58.997Z",
+  "generatedAt": "2026-08-16T22:47:19.828Z",
   "reading": {
     "source": "BBC Technology",
-    "title": "Tech Life",
-    "summary": "Dogs have a great sense of smell. Now machines are being trained to sniff out odours.",
-    "link": "https://www.bbc.co.uk/sounds/play/w3ct8jy5?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Tue, 21 Jul 2026 20:00:00 GMT",
+    "title": "Tech Now",
+    "summary": "New technologies measuring forests and exclusive access to a hacker rehab programme.",
+    "link": "https://www.bbc.co.uk/iplayer/episode/m002zxt1?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Sat, 01 Aug 2026 01:00:12 GMT",
     "keywords": [
       "tech",
-      "life",
-      "dogs",
-      "great",
-      "sense",
-      "smell",
-      "machines",
-      "being"
+      "technologies",
+      "measuring",
+      "forests",
+      "exclusive",
+      "access",
+      "hacker",
+      "rehab"
     ]
   },
   "news": {
-    "source": "NPR World",
-    "title": "Jason Arday, Cambridge professor accused of plagiarism, is found dead",
-    "summary": "Arday was 37 when he became Cambridge's youngest Black professor in 2023. He was found unresponsive Friday at a home in southwest London.",
-    "link": "https://www.npr.org/2026/08/15/nx-s1-5932488/jason-arday-dead",
-    "pubDate": "Sat, 15 Aug 2026 13:04:43 -0400",
+    "source": "The Guardian World",
+    "title": "DRC’s fast-growing Ebola outbreak spreads to sixth province",
+    "summary": "Man dies in Bas-Uele after travelling from Haut-Uele, as head of WHO says outbreak on track to be deadliest ever The Ebola outbreak in the Democratic Republic of the Congo has spread to a sixth province, officials have said, a day after the head of the World Health Organization said the outbreak was on track to surpass the deadliest in history, which killed at least 11,000 people more than a decade ago. The current outbreak has killed more than 2,100 people out of more than 4,500 cases, according to the latest government figures released on Tuesday. At the same point in the 2014-16 outbreak in west Africa, the previous most deadly outbreak, 755 cases had been recorded, according to WHO data. Continue reading...",
+    "link": "https://www.theguardian.com/world/2026/aug/13/ebola-drc-democratic-republic-congo-sixth-province",
+    "pubDate": "Thu, 13 Aug 2026 15:17:13 GMT",
     "keywords": [
-      "arday",
-      "cambridge",
-      "professor",
-      "found",
-      "jason",
-      "accused",
-      "plagiarism",
-      "dead"
+      "outbreak",
+      "than",
+      "ebola",
+      "sixth",
+      "province",
+      "head",
+      "track",
+      "deadliest"
     ],
-    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
