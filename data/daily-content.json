@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-08-20T22:59:42.098Z",
+  "generatedAt": "2026-08-21T22:55:02.359Z",
   "reading": {
-    "source": "NPR Business",
-    "title": "3 things to know about the $40 trillion federal debt",
-    "summary": "The U.S. federal debt hit a record $40 trillion this week. The debt has doubled since 2017, and just paying interest on the accumulated debt now costs the government more than $1 trillion a year.",
-    "link": "https://www.npr.org/2026/08/20/nx-s1-5939473/40-trillion-federal-debt",
-    "pubDate": "Thu, 20 Aug 2026 12:50:41 -0400",
+    "source": "BBC Technology",
+    "title": "OpenAI makes ChatGPT less 'human' for teens in new safety update",
+    "summary": "OpenAI insisted this was not in response to a particular issue with children believing ChatGPT to be alive.",
+    "link": "https://www.bbc.co.uk/news/articles/czxqz91n5n8o?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Tue, 18 Aug 2026 11:26:26 GMT",
     "keywords": [
-      "debt",
-      "trillion",
-      "federal",
-      "things",
-      "know",
-      "record",
-      "week",
-      "doubled"
+      "openai",
+      "chatgpt",
+      "makes",
+      "less",
+      "human",
+      "teens",
+      "safety",
+      "update"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "Trial of mum accused of killing her three children puts postpartum psychosis on the map",
-    "summary": "Postpartum psychosis is a psychiatric emergency that can involve mania, depression, hallucinations and delusions.",
-    "link": "https://www.bbc.co.uk/news/articles/c5yedy98j7po?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Wed, 19 Aug 2026 16:30:55 GMT",
+    "source": "The Guardian World",
+    "title": "North Korea fires 10 missiles day after Trump curtails South Korea joint drills",
+    "summary": "Launches, detected by South Korea and Japan, came after US scaled back exercises with South Korea in apparent overture to Kim Jong-un North Korea has launched about 10 short-range ballistic missiles towards the sea, South Korea’s military said, a day after Pyongyang shrugged off Donald Trump’s order to scale back US military drills with South Korea in an apparent attempt to resume diplomacy. The joint chiefs of staff said the missiles were launched from the region of Pyongyang at around 5pm (08.00 GMT) on Thursday towards North Korea’s eastern waters. Continue reading...",
+    "link": "https://www.theguardian.com/world/2026/aug/20/north-korea-fires-10-missiles-day-after-trump-curtails-south-korea-joint-drills",
+    "pubDate": "Thu, 20 Aug 2026 10:25:29 GMT",
     "keywords": [
-      "postpartum",
-      "psychosis",
-      "trial",
-      "accused",
-      "killing",
-      "three",
-      "children",
-      "puts"
+      "korea",
+      "south",
+      "north",
+      "missiles",
+      "trump",
+      "joint",
+      "drills",
+      "back"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
