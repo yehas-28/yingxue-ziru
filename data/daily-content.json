@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-08-23T22:51:08.148Z",
+  "generatedAt": "2026-08-24T22:57:32.413Z",
   "reading": {
-    "source": "NPR Business",
-    "title": "What to know about this weekend's IndyCar race on the National Mall",
-    "summary": "Why is the car race in this part of D.C.? Will it be streaming? Who's paying for it? Here's what to know before the Freedom 250 Grand Prix hits the National Mall this weekend.",
-    "link": "https://www.npr.org/2026/08/21/nx-s1-5939443/dc-indycar-race-overview-watch-politics",
-    "pubDate": "Fri, 21 Aug 2026 05:01:00 -0400",
+    "source": "BBC Technology",
+    "title": "OpenAI makes ChatGPT less 'human' for teens in new safety update",
+    "summary": "OpenAI insisted this was not in response to a particular issue with children believing ChatGPT to be alive.",
+    "link": "https://www.bbc.co.uk/news/articles/czxqz91n5n8o?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Tue, 18 Aug 2026 11:26:26 GMT",
     "keywords": [
-      "what",
-      "know",
-      "weekend",
-      "race",
-      "national",
-      "mall",
-      "indycar",
-      "part"
+      "openai",
+      "chatgpt",
+      "makes",
+      "less",
+      "human",
+      "teens",
+      "safety",
+      "update"
     ]
   },
   "news": {
-    "source": "NPR World",
-    "title": "Wars are happening across the world. Many of them are connected",
-    "summary": "All Thing Considered host Mary Louise Kelly speaks with NPR correspondents Tom Bowman and Emily Feng about the ways in which the U.S. war with Iran is connected to other conflicts across the globe.",
-    "link": "https://www.npr.org/2026/08/20/nx-s1-5937954/wars-are-happening-across-the-world-many-of-them-are-connected",
-    "pubDate": "Thu, 20 Aug 2026 16:05:10 -0400",
+    "source": "BBC World",
+    "title": "'Quiet, quiet, quiet!' - What triggers Trump to shut down reporters?",
+    "summary": "As the US president insults a journalist again, the BBC looks at the questions he does not like to answer.",
+    "link": "https://www.bbc.co.uk/news/videos/c235j22d85ro?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Sat, 22 Aug 2026 02:39:10 GMT",
     "keywords": [
-      "across",
-      "connected",
-      "wars",
-      "happening",
-      "world",
-      "many",
-      "them",
-      "thing"
+      "quiet",
+      "what",
+      "triggers",
+      "trump",
+      "shut",
+      "down",
+      "reporters",
+      "president"
     ],
-    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
