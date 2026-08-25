@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-08-24T22:57:32.413Z",
+  "generatedAt": "2026-08-25T22:59:49.306Z",
   "reading": {
     "source": "BBC Technology",
-    "title": "OpenAI makes ChatGPT less 'human' for teens in new safety update",
-    "summary": "OpenAI insisted this was not in response to a particular issue with children believing ChatGPT to be alive.",
-    "link": "https://www.bbc.co.uk/news/articles/czxqz91n5n8o?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Tue, 18 Aug 2026 11:26:26 GMT",
+    "title": "OpenAI slows down training after its AI carried out hack",
+    "summary": "The ChatGPT-maker said training will be slowed for two weeks while it puts the upgrades in place.",
+    "link": "https://www.bbc.co.uk/news/articles/c235dmndylzo?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Wed, 19 Aug 2026 11:19:12 GMT",
     "keywords": [
+      "training",
       "openai",
-      "chatgpt",
-      "makes",
-      "less",
-      "human",
-      "teens",
-      "safety",
-      "update"
+      "slows",
+      "down",
+      "carried",
+      "hack",
+      "chatgpt-maker",
+      "slowed"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "'Quiet, quiet, quiet!' - What triggers Trump to shut down reporters?",
-    "summary": "As the US president insults a journalist again, the BBC looks at the questions he does not like to answer.",
-    "link": "https://www.bbc.co.uk/news/videos/c235j22d85ro?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Sat, 22 Aug 2026 02:39:10 GMT",
+    "source": "NPR World",
+    "title": "Canada hits back at the U.S. with tariffs as the countries' trade fight escalates",
+    "summary": "The measures come after President Trump imposed 50% tariffs on many Canadian goods and threatened more after trade talks broke down on Friday.",
+    "link": "https://www.npr.org/2026/08/25/nx-s1-5944240/canada-us-tariffs",
+    "pubDate": "Tue, 25 Aug 2026 11:20:18 -0400",
     "keywords": [
-      "quiet",
-      "what",
-      "triggers",
-      "trump",
-      "shut",
-      "down",
-      "reporters",
-      "president"
+      "tariffs",
+      "trade",
+      "canada",
+      "hits",
+      "back",
+      "countries",
+      "fight",
+      "escalates"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
