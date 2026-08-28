@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-08-25T22:59:49.306Z",
+  "generatedAt": "2026-08-28T04:32:06.833Z",
   "reading": {
-    "source": "BBC Technology",
-    "title": "OpenAI slows down training after its AI carried out hack",
-    "summary": "The ChatGPT-maker said training will be slowed for two weeks while it puts the upgrades in place.",
-    "link": "https://www.bbc.co.uk/news/articles/c235dmndylzo?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Wed, 19 Aug 2026 11:19:12 GMT",
+    "source": "NPR Business",
+    "title": "Meta agrees to $17 billion settlement and new protections for teens",
+    "summary": "Meta and the attorneys general of four states have reached a $17 billion settlement in a landmark federal trial over child safety issues on Facebook and Instagram.",
+    "link": "https://www.npr.org/2026/08/26/nx-s1-5945010/meta-agrees-to-17-billion-settlement-and-new-protections-for-teens",
+    "pubDate": "Wed, 26 Aug 2026 16:09:00 -0400",
     "keywords": [
-      "training",
-      "openai",
-      "slows",
-      "down",
-      "carried",
-      "hack",
-      "chatgpt-maker",
-      "slowed"
+      "meta",
+      "billion",
+      "settlement",
+      "agrees",
+      "protections",
+      "teens",
+      "attorneys",
+      "general"
     ]
   },
   "news": {
-    "source": "NPR World",
-    "title": "Canada hits back at the U.S. with tariffs as the countries' trade fight escalates",
-    "summary": "The measures come after President Trump imposed 50% tariffs on many Canadian goods and threatened more after trade talks broke down on Friday.",
-    "link": "https://www.npr.org/2026/08/25/nx-s1-5944240/canada-us-tariffs",
-    "pubDate": "Tue, 25 Aug 2026 11:20:18 -0400",
+    "source": "The Guardian World",
+    "title": "Canadian prime minister and New York lawmaker denounce Trump’s move to rename Lake Ontario as Lake America – as it happened",
+    "summary": "This live blog is now closed. Sign up for the Breaking News US email On Wednesday, Trump officially signed a proclamation on Wednesday that suspends higher tariffs on 300,000 metric tons of foreign beef imports for 90 days. This comes after backlash to the proposal – designed to lower grocery costs for Americans in the run-up to the November midterms. Several Republicans – in states with sizable cattle farming industries – have criticized the policy, saying it is a short term solution that will stymie ranchers’ ability to rebuild their herds. Four leading livestock and agricultural organizations also wrote a letter to the president on Wednesday urging him to reverse course. “Flooding the market with discounted foreign beef is not the way to rebuild the American cattle herd, strengthen food security, or lower grocery bills in a lasting way,” the groups wrote. Donald Trump will begin his day in Washington, before traveling to Houston, Texas where he’ll headline a Republican National Commitee (RNC) fundraiser, and help boost Ken Paxton — the state’s attorney general and Republican nominee for Senate. A reminder that Paxton beat long serving Senator John Cornyn in the GOP primary earlier this year after receiving Trump’s endorsement. Paxton is set to face Democratic state lawmaker James Talarico in November. Continue reading...",
+    "link": "https://www.theguardian.com/us-news/live/2026/aug/27/cia-moscow-nato-ratcliffe-rutte-colby-trump-paxton-voting-latest-news-updates",
+    "pubDate": "Fri, 28 Aug 2026 02:00:27 GMT",
     "keywords": [
-      "tariffs",
-      "trade",
-      "canada",
-      "hits",
-      "back",
-      "countries",
-      "fight",
-      "escalates"
+      "trump",
+      "wednesday",
+      "paxton",
+      "lawmaker",
+      "lake",
+      "foreign",
+      "beef",
+      "lower"
     ],
-    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
