@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-08-29T23:50:24.489Z",
+  "generatedAt": "2026-08-31T00:09:12.424Z",
   "reading": {
-    "source": "BBC Technology",
-    "title": "Tech Life",
-    "summary": "For years, schools have posted photos of their pupils online. But could they be misused?",
-    "link": "https://www.bbc.co.uk/sounds/play/w3ct8jy8?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Tue, 11 Aug 2026 19:30:00 GMT",
+    "source": "NPR Business",
+    "title": "School districts face a back-to-school math problem: The high price of diesel",
+    "summary": "With the war in Iran driving up fuel prices, diesel is now nearly $5.60 a gallon, affecting school districts at the start of the year.",
+    "link": "https://www.npr.org/2026/08/27/nx-s1-5944429/school-buses-fuel-diesel-prices",
+    "pubDate": "Thu, 27 Aug 2026 05:01:00 -0400",
     "keywords": [
-      "tech",
-      "life",
-      "years",
-      "schools",
-      "posted",
-      "photos",
-      "pupils",
-      "online"
+      "school",
+      "districts",
+      "diesel",
+      "face",
+      "back-to-school",
+      "math",
+      "problem",
+      "high"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "World's youngest reigning traditional monarch dies aged 34",
-    "summary": "King Oyo ascended to the throne of Uganda's Tooro kingdom when he was just three years old.",
-    "link": "https://www.bbc.co.uk/news/articles/c0j38d9v40po?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Fri, 28 Aug 2026 11:13:24 GMT",
+    "source": "NPR World",
+    "title": "Energy experts have doubts about Trump's newly proposed Venezuelan oil deal",
+    "summary": "There are many reasons to be skeptical of the Trump administration's announcement that the U.S. will develop Venezuelan oil.",
+    "link": "https://www.npr.org/2026/08/30/nx-s1-5948708/energy-experts-have-doubts-about-trumps-newly-proposed-venezuelan-oil-deal",
+    "pubDate": "Sun, 30 Aug 2026 08:02:27 -0400",
     "keywords": [
-      "world",
-      "youngest",
-      "reigning",
-      "traditional",
-      "monarch",
-      "dies",
-      "aged",
-      "king"
+      "trump",
+      "venezuelan",
+      "energy",
+      "experts",
+      "doubts",
+      "newly",
+      "proposed",
+      "deal"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
