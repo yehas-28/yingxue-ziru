@@ -1,38 +1,39 @@
 {
-  "generatedAt": "2026-09-01T00:56:49.214Z",
+  "generatedAt": "2026-09-01T23:44:16.621Z",
   "reading": {
-    "source": "BBC Technology",
-    "title": "Tech Now",
-    "summary": "Highlights from the Esports World Cup in Paris and how to build a gaming PC.",
-    "link": "https://www.bbc.co.uk/iplayer/episode/m002zn5l?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Sat, 25 Jul 2026 01:00:00 GMT",
+    "source": "NASA News",
+    "title": "Historic Engines Take Their Place on Artemis III",
+    "summary": "On Aug. 24, technicians at NASA’s Kennedy Space Center in Florida began installing the four RS‑25 engines in the core stage of the agency’s Space Launch System (SLS) rocket that will carry the Artemis III crew into low Earth orbit in 2027. Each RS‑25 engine has a unique serial number that records its detailed flight […]",
+    "link": "https://www.nasa.gov/image-article/historic-engines-take-their-place-on-artemis-iii/",
+    "pubDate": "Tue, 01 Sep 2026 17:30:35 +0000",
     "keywords": [
-      "tech",
-      "highlights",
-      "esports",
-      "world",
-      "paris",
-      "build",
-      "gaming"
+      "engines",
+      "artemis",
+      "space",
+      "historic",
+      "take",
+      "place",
+      "technicians",
+      "nasa"
     ]
   },
   "news": {
-    "source": "NPR World",
-    "title": "Hit shows from Edinburgh's Fringe festival are coming to America. Here are our top picks",
-    "summary": "The annual \"anything goes\" performing arts festival featured more than 4,200 performances this year. These are the ones we're still talking about.",
-    "link": "https://www.npr.org/2026/08/31/nx-s1-5949346/edinburgh-fringe-scotland-best-shows-coming-to-america",
-    "pubDate": "Mon, 31 Aug 2026 05:00:00 -0400",
+    "source": "BBC World",
+    "title": "US army secretary resigns after months of tension",
+    "summary": "Dan Driscoll, the youngest-ever army secretary, was about 18 months into his post.",
+    "link": "https://www.bbc.co.uk/news/articles/czjz31dk1xmo?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Tue, 01 Sep 2026 01:01:03 GMT",
     "keywords": [
-      "festival",
-      "shows",
-      "edinburgh",
-      "fringe",
-      "coming",
-      "america",
-      "here",
-      "picks"
+      "army",
+      "secretary",
+      "months",
+      "resigns",
+      "tension",
+      "driscoll",
+      "youngest-ever",
+      "post"
     ],
-    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
