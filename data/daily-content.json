@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-09-01T23:44:16.621Z",
+  "generatedAt": "2026-09-02T23:46:59.475Z",
   "reading": {
     "source": "NASA News",
-    "title": "Historic Engines Take Their Place on Artemis III",
-    "summary": "On Aug. 24, technicians at NASA’s Kennedy Space Center in Florida began installing the four RS‑25 engines in the core stage of the agency’s Space Launch System (SLS) rocket that will carry the Artemis III crew into low Earth orbit in 2027. Each RS‑25 engine has a unique serial number that records its detailed flight […]",
-    "link": "https://www.nasa.gov/image-article/historic-engines-take-their-place-on-artemis-iii/",
-    "pubDate": "Tue, 01 Sep 2026 17:30:35 +0000",
+    "title": "NASA Rocket Takes First Multi-Point Look Inside Radio-Disrupting Clouds",
+    "summary": "High above Earth, thin veils of metallic haze drift through the edge of space. Known as sporadic E layers, these high-altitude “clouds” form from the vaporized dust of burnt-up meteors, earning their name from the unpredictable way they emerge and then dissipate. Now, new results from a NASA sounding rocket — a suborbital research rocket […]",
+    "link": "https://science.nasa.gov/science-research/heliophysics/nasa-rocket-takes-first-multi-point-look-inside-radio-disrupting-clouds/",
+    "pubDate": "Wed, 02 Sep 2026 14:53:54 +0000",
     "keywords": [
-      "engines",
-      "artemis",
-      "space",
-      "historic",
-      "take",
-      "place",
-      "technicians",
-      "nasa"
+      "rocket",
+      "nasa",
+      "clouds",
+      "takes",
+      "first",
+      "multi-point",
+      "look",
+      "inside"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "US army secretary resigns after months of tension",
-    "summary": "Dan Driscoll, the youngest-ever army secretary, was about 18 months into his post.",
-    "link": "https://www.bbc.co.uk/news/articles/czjz31dk1xmo?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Tue, 01 Sep 2026 01:01:03 GMT",
+    "source": "The Guardian World",
+    "title": "China’s falling emissions amid Iran war spark hope of decarbonisation watershed",
+    "summary": "Oil consumption plummets and EV sales soar as analysts say demand may not fully return even if crude price falls China’s carbon dioxide emissions fell by 1% after the outbreak of the US-Israeli war on Iran, thanks to a sharp reduction in oil consumption and a steady rise in the use of electric vehicles and public transport, analysis shows. The report reveals the role of clean energy in cushioning the price shocks caused by the strait of Hormuz crisis to the world’s biggest oil importer. It also reinforces hopes that China, which is the world’s biggest greenhouse gas emitter, may be nearing a turning point in decarbonising its economy. Continue reading...",
+    "link": "https://www.theguardian.com/environment/2026/sep/03/china-co2-emissions-iran-war",
+    "pubDate": "Wed, 02 Sep 2026 23:01:37 GMT",
     "keywords": [
-      "army",
-      "secretary",
-      "months",
-      "resigns",
-      "tension",
-      "driscoll",
-      "youngest-ever",
-      "post"
+      "china",
+      "emissions",
+      "iran",
+      "consumption",
+      "price",
+      "world",
+      "biggest",
+      "falling"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
