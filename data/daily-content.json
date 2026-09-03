@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-09-02T23:46:59.475Z",
+  "generatedAt": "2026-09-03T23:44:57.114Z",
   "reading": {
     "source": "NASA News",
-    "title": "NASA Rocket Takes First Multi-Point Look Inside Radio-Disrupting Clouds",
-    "summary": "High above Earth, thin veils of metallic haze drift through the edge of space. Known as sporadic E layers, these high-altitude “clouds” form from the vaporized dust of burnt-up meteors, earning their name from the unpredictable way they emerge and then dissipate. Now, new results from a NASA sounding rocket — a suborbital research rocket […]",
-    "link": "https://science.nasa.gov/science-research/heliophysics/nasa-rocket-takes-first-multi-point-look-inside-radio-disrupting-clouds/",
-    "pubDate": "Wed, 02 Sep 2026 14:53:54 +0000",
+    "title": "APOD: 2026 September 3 – The Eclipse and the Stork",
+    "summary": "APOD Science APOD APOD: 2026 September 3 – The… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer. The Eclipse […]",
+    "link": "https://science.nasa.gov/image-article/apod-2026-september-3-the-eclipse-and-the-stork/",
+    "pubDate": "Thu, 03 Sep 2026 04:05:00 +0000",
     "keywords": [
-      "rocket",
-      "nasa",
-      "clouds",
-      "takes",
-      "first",
-      "multi-point",
-      "look",
-      "inside"
+      "apod",
+      "september",
+      "eclipse",
+      "stork",
+      "science",
+      "today",
+      "archive",
+      "submissions"
     ]
   },
   "news": {
-    "source": "The Guardian World",
-    "title": "China’s falling emissions amid Iran war spark hope of decarbonisation watershed",
-    "summary": "Oil consumption plummets and EV sales soar as analysts say demand may not fully return even if crude price falls China’s carbon dioxide emissions fell by 1% after the outbreak of the US-Israeli war on Iran, thanks to a sharp reduction in oil consumption and a steady rise in the use of electric vehicles and public transport, analysis shows. The report reveals the role of clean energy in cushioning the price shocks caused by the strait of Hormuz crisis to the world’s biggest oil importer. It also reinforces hopes that China, which is the world’s biggest greenhouse gas emitter, may be nearing a turning point in decarbonising its economy. Continue reading...",
-    "link": "https://www.theguardian.com/environment/2026/sep/03/china-co2-emissions-iran-war",
-    "pubDate": "Wed, 02 Sep 2026 23:01:37 GMT",
+    "source": "NPR World",
+    "title": "Iran fires on its Gulf neighbors, retaliating for U.S. strikes after a monthlong lull",
+    "summary": "The six-month war has led to a spike in oil prices, roiled the global economy and posed increasing political problems for President Trump's Republican Party ahead of November midterm elections.",
+    "link": "https://www.npr.org/2026/09/02/nx-s1-5954013/us-iran-war-latest-updates",
+    "pubDate": "Wed, 02 Sep 2026 11:18:09 -0400",
     "keywords": [
-      "china",
-      "emissions",
       "iran",
-      "consumption",
-      "price",
-      "world",
-      "biggest",
-      "falling"
+      "fires",
+      "gulf",
+      "neighbors",
+      "retaliating",
+      "strikes",
+      "monthlong",
+      "lull"
     ],
-    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
