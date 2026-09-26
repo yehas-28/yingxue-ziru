@@ -1,37 +1,39 @@
 {
-  "generatedAt": "2026-09-25T00:12:32.988Z",
+  "generatedAt": "2026-09-26T00:19:41.732Z",
   "reading": {
     "source": "BBC Technology",
-    "title": "Tech Life",
-    "summary": "AI can only communicate in languages that it's been trained on.",
-    "link": "https://www.bbc.co.uk/sounds/play/w3ct8jyc?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Tue, 01 Sep 2026 20:10:00 GMT",
+    "title": "Tech Now",
+    "summary": "Adrienne Murray follows NASA scientists in Iceland researching a rare total solar eclipse.",
+    "link": "https://www.bbc.co.uk/iplayer/episode/m0032301?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Sat, 19 Sep 2026 01:00:00 GMT",
     "keywords": [
       "tech",
-      "life",
-      "only",
-      "communicate",
-      "languages",
-      "trained"
+      "adrienne",
+      "murray",
+      "follows",
+      "nasa",
+      "scientists",
+      "iceland",
+      "researching"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "Trump and Xi come face-to-face as US and China battle to win the AI race",
-    "summary": "The US and China are vying for AI supremacy while seeking to keep it under human control.",
-    "link": "https://www.bbc.co.uk/news/articles/c6gqdgg8w59xo?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Wed, 23 Sep 2026 22:01:17 GMT",
+    "source": "The Guardian World",
+    "title": "Top South African police officer charged with raping woman, 18, and grooming 16-year-old girl",
+    "summary": "Arrest of Shadrack Sibiya comes as country reels from cases of femicide and alleged police corruption and criminality One of South Africa’s most senior police officers has been charged with raping an 18-year-old woman and grooming a 16-year-old girl, as the country’s police face allegations of corruption and failing to tackle violence against women and girls. Shadrack Sibiya, who was already suspended from his role as deputy national police commissioner over allegations he interfered with political killings investigations, was arrested on Monday. He is facing charges of rape, people trafficking, promoting the sexual grooming of a child and two counts of grooming a child. Continue reading...",
+    "link": "https://www.theguardian.com/world/2026/sep/23/south-africa-top-police-officer-shadrack-sibiya-charged-rape-grooming",
+    "pubDate": "Wed, 23 Sep 2026 09:38:06 GMT",
     "keywords": [
-      "china",
-      "trump",
-      "come",
-      "face-to-face",
-      "battle",
-      "race",
-      "vying",
-      "supremacy"
+      "police",
+      "grooming",
+      "year-old",
+      "south",
+      "charged",
+      "raping",
+      "woman",
+      "girl"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
