@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T00:37:52.483Z",
+  "generatedAt": "2026-10-12T00:54:45.152Z",
   "reading": {
     "source": "NASA News",
     "title": "APOD: 2026 October 10 – Lunar Farside",
@@ -18,22 +18,22 @@
     ]
   },
   "news": {
-    "source": "NPR World",
-    "title": "Trump weighs joining the fight against Houthis after Riyadh airport attack",
-    "summary": "The surge in attacks, including against other Saudi airports, military facilities and oil infrastructure, has come in the week since a Saudi-led coalition launched a major military offensive against the Houthis.",
-    "link": "https://www.npr.org/2026/10/10/nx-s1-5997512/saudi-arabia-riyadh-airport-bombing-attack",
-    "pubDate": "Sat, 10 Oct 2026 17:32:53 -0400",
+    "source": "BBC World",
+    "title": "Ukraine strikes Yandex data centre in third attack on Russian tech giant",
+    "summary": "It is the third time this week that Ukraine has targeted Russian tech giant Yandex, forcing the company to suspend its operations.",
+    "link": "https://www.bbc.co.uk/news/articles/cw0k0g57mk3zo?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Sun, 11 Oct 2026 14:38:10 GMT",
     "keywords": [
-      "against",
-      "houthis",
-      "military",
-      "trump",
-      "weighs",
-      "joining",
-      "fight",
-      "riyadh"
+      "ukraine",
+      "yandex",
+      "third",
+      "russian",
+      "tech",
+      "giant",
+      "strikes",
+      "data"
     ],
-    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
