@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-10-17T00:06:45.423Z",
+  "generatedAt": "2026-10-17T23:42:32.982Z",
   "reading": {
     "source": "NASA News",
-    "title": "NASA Satellites Observe Historic 2026 El Niño",
-    "summary": "A phenomenon rarer than a solar eclipse and more powerful than any single storm system is unfolding this fall, and NASA is tracking it closely. El Niño is a natural climate pattern that emerges roughly every two to seven years marked by warmer-than-normal water temperatures in parts of the equatorial Pacific. NASA scientists are keeping […]",
-    "link": "https://science.nasa.gov/earth/nasa-satellites-observe-historic-2026-el-nino/",
-    "pubDate": "Thu, 15 Oct 2026 17:59:22 +0000",
+    "title": "NASA to Help Unlock Mysteries of Mars’ Moons in Upcoming Mission",
+    "summary": "NASA is playing an important role in JAXA’s (Japan Aerospace Exploration Agency) MMX (Martian Moons eXploration) mission, to advance our understanding of Mars’ moons and build on the agency’s long history of exploring the Red Planet. The mission aims to characterize and determine the origin of Mars’ moons Phobos and Deimos and deliver a sample […]",
+    "link": "https://science.nasa.gov/directorates/smd/planetary-science-division/nasa-to-help-unlock-mysteries-of-mars-moons-in-upcoming-mission/",
+    "pubDate": "Thu, 15 Oct 2026 19:58:08 +0000",
     "keywords": [
+      "moons",
+      "mars",
+      "mission",
       "nasa",
-      "than",
-      "satellites",
-      "observe",
-      "historic",
-      "phenomenon",
-      "rarer",
-      "solar"
+      "exploration",
+      "agency",
+      "help",
+      "unlock"
     ]
   },
   "news": {
-    "source": "NPR World",
-    "title": "Greetings from Mexico City, where a bullfighting ban doesn't stop this matador training",
-    "summary": "One plays the bull, the other the bullfighter, as a pair practices a dance of death in a sport that's prohibited in the Mexican capital city.",
-    "link": "https://www.npr.org/2026/10/15/nx-s1-6001550/mexico-city-bullfighting-ban-matador-training",
-    "pubDate": "Thu, 15 Oct 2026 06:00:00 -0400",
+    "source": "BBC World",
+    "title": "Violent clashes, looting and buildings ablaze in France as over 1,000 arrested after protests",
+    "summary": "Disorder broke out in cities across the country on a day in which more than half a million joined cost of living protests.",
+    "link": "https://www.bbc.co.uk/news/articles/c6d937wedj7jo?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Sat, 17 Oct 2026 20:52:17 GMT",
     "keywords": [
-      "city",
-      "greetings",
-      "mexico",
-      "where",
-      "bullfighting",
-      "doesn",
-      "stop",
-      "matador"
+      "protests",
+      "violent",
+      "clashes",
+      "looting",
+      "buildings",
+      "ablaze",
+      "france",
+      "over"
     ],
-    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
