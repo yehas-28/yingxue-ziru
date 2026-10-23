@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-10-22T00:22:14.119Z",
+  "generatedAt": "2026-10-23T00:21:07.281Z",
   "reading": {
     "source": "BBC Technology",
-    "title": "Ex-OpenAI worker accused of planting bug had Saudi support, claims prosecutors",
-    "summary": "Abdulrahman Alfozan, who is accused of planting a recording device, has been denied bail.",
-    "link": "https://www.bbc.co.uk/news/articles/c6gel2dlyxvyo?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Mon, 19 Oct 2026 21:12:30 GMT",
+    "title": "Zoe Kleinman: PHP is the cyber equivalent of an unexploded bomb",
+    "summary": "It has been a dramatic, public and global response, but the cyber event hasn't happened yet.",
+    "link": "https://www.bbc.co.uk/news/articles/cw98z6qlyvg3o?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Thu, 22 Oct 2026 10:17:26 GMT",
     "keywords": [
-      "accused",
-      "planting",
-      "ex-openai",
-      "worker",
-      "saudi",
-      "support",
-      "claims",
-      "prosecutors"
+      "cyber",
+      "kleinman",
+      "equivalent",
+      "unexploded",
+      "bomb",
+      "dramatic",
+      "public",
+      "global"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "Gambia to pay victims of Yahya Jammeh's rule from proceeds of his seized US mansion",
-    "summary": "The Gambia has confirmed receiving $2.5m from the sale of the house in Maryland.",
-    "link": "https://www.bbc.co.uk/news/articles/cmn8wx75l2n8o?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Wed, 21 Oct 2026 08:31:48 GMT",
+    "source": "The Guardian World",
+    "title": "Shamonda virus detected in human for first time in France",
+    "summary": "Investigations under way to determine whether virus normally found in livestock contributed to man’s death A man in France has become the first human known to have contracted Shamonda virus, with investigations under way to explore whether it contributed to his death. Shamonda virus is a type of bunyavirus and is spread by bites from infected midges. According to the Austrian Agency for Health and Food Safety , in animals such as cattle, sheep and goats it can cause diarrhoea, lack of appetite and a decline in milk yield, “as well as abortions and congenital abnormalities in newborn calves, lambs and kids”. Continue reading...",
+    "link": "https://www.theguardian.com/world/2026/oct/22/shamonda-virus-detected-in-human-first-time-france",
+    "pubDate": "Thu, 22 Oct 2026 15:07:01 GMT",
     "keywords": [
-      "gambia",
-      "victims",
-      "yahya",
-      "jammeh",
-      "rule",
-      "proceeds",
-      "seized",
-      "mansion"
+      "virus",
+      "shamonda",
+      "human",
+      "first",
+      "france",
+      "investigations",
+      "under",
+      "whether"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
