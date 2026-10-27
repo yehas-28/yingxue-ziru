@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-10-25T23:43:27.918Z",
+  "generatedAt": "2026-10-27T01:03:05.330Z",
   "reading": {
     "source": "NASA News",
-    "title": "APOD: 2026 October 24 – Rosetta’s Selfie",
-    "summary": "APOD Science APOD APOD: 2026 October 24 –… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer. Rosetta’s Selfie Explanation: […]",
-    "link": "https://science.nasa.gov/image-article/apod-2026-october-24-rosettas-selfie/",
-    "pubDate": "Sat, 24 Oct 2026 04:05:00 +0000",
+    "title": "Solar Cells Inspected on NASA’s NEO Surveyor",
+    "summary": "Description The large sunshade of NASA’s Near-Earth Object (NEO) Surveyor mission is inspected by a technician at BAE Systems Space & Mission Systems in Boulder, Colorado, in late July. Built by Applied Aerospace in Stockton, California, the sunshade structure was outfitted with its solar cells by SolAero Technologies in Albuquerque, New Mexico, in January. Environmental […]",
+    "link": "https://science.nasa.gov/photojournal/solar-cells-inspected-on-nasas-neo-surveyor/",
+    "pubDate": "Mon, 26 Oct 2026 20:52:24 +0000",
     "keywords": [
-      "apod",
-      "october",
-      "rosetta",
-      "selfie",
-      "explanation",
-      "science",
-      "today",
-      "archive"
+      "solar",
+      "cells",
+      "inspected",
+      "nasa",
+      "surveyor",
+      "sunshade",
+      "mission",
+      "systems"
     ]
   },
   "news": {
-    "source": "The Guardian World",
-    "title": "Brazil election 2026: Live second round results",
-    "summary": "After a shock defeat in the first round, the incumbent Brazilian president, Luiz Inácio Lula da Silva, is seeking a new term in a runoff with Flávio Bolsonaro, the son of his convicted predecessor Polls were originally due to close at 17.00BRT, 20.00GMT, but voting was extended for two hours; the full count is now under way. Full coverage here Continue reading...",
-    "link": "https://www.theguardian.com/world/ng-interactive/2026/oct/25/brazil-election-2026-live-second-round-results",
-    "pubDate": "Sun, 25 Oct 2026 22:11:16 GMT",
+    "source": "BBC World",
+    "title": "Venezuelan opposition leader María Machado returns after months in exile",
+    "summary": "Machado had left the country just a month before the US government seized Venezuelan President Nicolás Maduro.",
+    "link": "https://www.bbc.co.uk/news/articles/cq8ez592pp0eo?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Mon, 26 Oct 2026 05:20:19 GMT",
     "keywords": [
-      "round",
-      "full",
-      "brazil",
-      "election",
-      "live",
-      "second",
-      "results",
-      "shock"
+      "venezuelan",
+      "machado",
+      "opposition",
+      "leader",
+      "returns",
+      "months",
+      "exile",
+      "left"
     ],
-    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
