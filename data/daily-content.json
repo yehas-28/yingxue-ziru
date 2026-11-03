@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-11-02T01:11:25.232Z",
+  "generatedAt": "2026-11-03T03:15:34.892Z",
   "reading": {
-    "source": "BBC Technology",
-    "title": "Tech Life",
-    "summary": "We hear from Ondřej Surý, the programmer whose PHP patches helped avert a cyber crisis.",
-    "link": "https://www.bbc.co.uk/sounds/play/w3ct8jys?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Tue, 27 Oct 2026 20:30:00 GMT",
+    "source": "NPR Business",
+    "title": "Two economists studied California's billionaire tax. They reached wildly different conclusions",
+    "summary": "What happens in California could shape how America taxes the superrich. But will its billionaire tax fill state coffers — or drain them?",
+    "link": "https://www.npr.org/sections/planet-money/2026/11/02/g-s1-151009/two-economists-studied-californias-billionaire-tax-they-reached-wildly-different-conclusions",
+    "pubDate": "Mon, 02 Nov 2026 06:30:00 -0500",
     "keywords": [
-      "tech",
-      "life",
-      "hear",
-      "programmer",
-      "whose",
-      "patches",
-      "helped",
-      "avert"
+      "california",
+      "billionaire",
+      "economists",
+      "studied",
+      "reached",
+      "wildly",
+      "different",
+      "conclusions"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "CCTV and zip ties: How US mail-in votes are secured and counted",
-    "summary": "BBC Verify goes to an election centre to get a behind-the-scenes look at how mail-in ballots for the US midterm elections are processed.",
-    "link": "https://www.bbc.co.uk/news/videos/cw4g1vlj4v2jo?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Sat, 31 Oct 2026 09:16:14 GMT",
+    "source": "The Guardian World",
+    "title": "Reddit and libertarian group challenge Australia’s under-16s social media ban in high court",
+    "summary": "Social network and Digital Freedom Project, led by NSW state MP John Ruddick, seek to overturn ban on grounds of implied freedom of political communication Australia’s world-leading under-16s social media ban will face its first major legal challenge on Tuesday, as Reddit and an advocacy group headed by a libertarian politician seek to overturn the law in the high court. Nearly 11 months ago, 10 platforms – Snapchat, TikTok, YouTube, Facebook, Instagram, Reddit, Kick, X, Twitch and Threads – were required to deactivate or suspend the accounts of users they determined to be aged under 16 years. Continue reading...",
+    "link": "https://www.theguardian.com/australia-news/2026/nov/03/australia-social-media-ban-high-court-challenge-reddit-digital-freedom-project",
+    "pubDate": "Mon, 02 Nov 2026 22:09:35 GMT",
     "keywords": [
-      "mail-in",
-      "cctv",
-      "ties",
-      "votes",
-      "secured",
-      "counted",
-      "verify",
-      "goes"
+      "reddit",
+      "social",
+      "libertarian",
+      "group",
+      "challenge",
+      "australia",
+      "under-",
+      "media"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
