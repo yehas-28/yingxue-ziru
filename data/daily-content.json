@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-11-09T01:22:13.966Z",
+  "generatedAt": "2026-11-10T03:56:03.364Z",
   "reading": {
-    "source": "BBC Technology",
-    "title": "Tech Now",
-    "summary": "Adrienne Murray follows NASA scientists in Iceland researching a rare total solar eclipse.",
-    "link": "https://www.bbc.co.uk/iplayer/episode/m0032301?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Sat, 19 Sep 2026 01:00:00 GMT",
+    "source": "NPR Business",
+    "title": "Nvidia shares tumble as the company says it's investigating CEO Jensen Huang",
+    "summary": "Nvidia's share price falls after the company begins an investigation into CEO Jensen Huang's alleged relationship with a woman accused of being a Chinese spy.",
+    "link": "https://www.npr.org/2026/11/09/nx-s1-6034478/nvidia-shares-tumble-as-the-company-says-its-investigating-ceo-jensen-huang",
+    "pubDate": "Mon, 09 Nov 2026 17:01:47 -0500",
     "keywords": [
-      "tech",
-      "adrienne",
-      "murray",
-      "follows",
-      "nasa",
-      "scientists",
-      "iceland",
-      "researching"
+      "nvidia",
+      "company",
+      "jensen",
+      "huang",
+      "shares",
+      "tumble",
+      "says",
+      "investigating"
     ]
   },
   "news": {
-    "source": "BBC World",
-    "title": "Footage shows derailed carriages after fatal train crash in Egypt",
-    "summary": "At least seven people died when two trains collided, causing several carriages to derail and fall down an embankment.",
-    "link": "https://www.bbc.co.uk/news/videos/cw78p2km7d94o?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Sun, 08 Nov 2026 16:05:57 GMT",
+    "source": "The Guardian World",
+    "title": "ANC faces bruising defeat in South African local elections with 80% of ballots counted",
+    "summary": "Former liberation movement’s share of national vote almost 14 percentage points below 2021 result The African National Congress is on course to suffer a bruising defeat in South Africa’s local elections, with the once dominant party of Nelson Mandela falling to under a third of the vote nationally with more than 80% of ballots counted. Wednesday’s fragmented vote marks another stage in the decline of the ANC, which has led national governments since the end of white minority apartheid rule in 1994. High unemployment, crime, corruption and poor local service delivery have all contributed to voters turning away from the party . Continue reading...",
+    "link": "https://www.theguardian.com/world/2026/nov/06/anc-faces-defeat-south-african-local-elections",
+    "pubDate": "Fri, 06 Nov 2026 12:48:37 GMT",
     "keywords": [
-      "carriages",
-      "footage",
-      "shows",
-      "derailed",
-      "fatal",
-      "train",
-      "crash",
-      "egypt"
+      "local",
+      "national",
+      "vote",
+      "bruising",
+      "defeat",
+      "south",
+      "african",
+      "elections"
     ],
-    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
