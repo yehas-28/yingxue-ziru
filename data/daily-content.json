@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-11-10T03:56:03.364Z",
+  "generatedAt": "2026-11-11T01:39:53.946Z",
   "reading": {
     "source": "NPR Business",
-    "title": "Nvidia shares tumble as the company says it's investigating CEO Jensen Huang",
-    "summary": "Nvidia's share price falls after the company begins an investigation into CEO Jensen Huang's alleged relationship with a woman accused of being a Chinese spy.",
-    "link": "https://www.npr.org/2026/11/09/nx-s1-6034478/nvidia-shares-tumble-as-the-company-says-its-investigating-ceo-jensen-huang",
-    "pubDate": "Mon, 09 Nov 2026 17:01:47 -0500",
+    "title": "Should you trust new AI agents with your money and data?",
+    "summary": "Tech companies want agentic AI to be the new way you shop. But should you trust AI when your money's involved?",
+    "link": "https://www.npr.org/2026/11/10/nx-s1-6018588/should-you-trust-new-ai-agents-with-your-money-and-data",
+    "pubDate": "Tue, 10 Nov 2026 16:44:32 -0500",
     "keywords": [
-      "nvidia",
-      "company",
-      "jensen",
-      "huang",
-      "shares",
-      "tumble",
-      "says",
-      "investigating"
+      "should",
+      "trust",
+      "money",
+      "agents",
+      "data",
+      "tech",
+      "companies",
+      "want"
     ]
   },
   "news": {
-    "source": "The Guardian World",
-    "title": "ANC faces bruising defeat in South African local elections with 80% of ballots counted",
-    "summary": "Former liberation movement’s share of national vote almost 14 percentage points below 2021 result The African National Congress is on course to suffer a bruising defeat in South Africa’s local elections, with the once dominant party of Nelson Mandela falling to under a third of the vote nationally with more than 80% of ballots counted. Wednesday’s fragmented vote marks another stage in the decline of the ANC, which has led national governments since the end of white minority apartheid rule in 1994. High unemployment, crime, corruption and poor local service delivery have all contributed to voters turning away from the party . Continue reading...",
-    "link": "https://www.theguardian.com/world/2026/nov/06/anc-faces-defeat-south-african-local-elections",
-    "pubDate": "Fri, 06 Nov 2026 12:48:37 GMT",
+    "source": "BBC World",
+    "title": "Real Madrid's Vinícius Jr sends surprise message to boy who lost his legs in Sudan's war",
+    "summary": "Double amputee Zaher told the BBC last year about his favourite footballer and a dream of being able to walk again.",
+    "link": "https://www.bbc.co.uk/news/articles/cqm26mmpp2p1o?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Wed, 11 Nov 2026 00:19:42 GMT",
     "keywords": [
-      "local",
-      "national",
-      "vote",
-      "bruising",
-      "defeat",
-      "south",
-      "african",
-      "elections"
+      "real",
+      "madrid",
+      "cius",
+      "sends",
+      "surprise",
+      "message",
+      "lost",
+      "legs"
     ],
-    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
