@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-11-14T01:56:33.344Z",
+  "generatedAt": "2026-11-15T01:28:55.111Z",
   "reading": {
     "source": "NPR Business",
-    "title": "CEO Jensen Huang resigns from chip giant Nvidia",
-    "summary": "The chip giant Nvidia announced that CEO Jensen Huang was stepping down following allegations that he'd had extramarital affairs, including one with a woman suspected of being a Chinese spy.",
-    "link": "https://www.npr.org/2026/11/12/nx-s1-6038865/ceo-jensen-huang-resigns-from-chip-giant-nvidia",
-    "pubDate": "Thu, 12 Nov 2026 17:02:44 -0500",
+    "title": "A negative Outlook: Microsoft scrambles to fix email outage",
+    "summary": "Early Friday, after Outlook had been down for more than 12 hours, Microsoft reported \"marginal success.\"",
+    "link": "https://www.npr.org/2026/11/12/nx-s1-6039343/outlook-down-widespread-outage-microsoft-email",
+    "pubDate": "Thu, 12 Nov 2026 20:26:24 -0500",
     "keywords": [
-      "jensen",
-      "huang",
-      "chip",
-      "giant",
-      "nvidia",
-      "resigns",
-      "announced",
-      "stepping"
+      "outlook",
+      "microsoft",
+      "negative",
+      "scrambles",
+      "email",
+      "outage",
+      "early",
+      "friday"
     ]
   },
   "news": {
-    "source": "The Guardian World",
-    "title": "Collision of two trains in Egypt kills at least seven",
-    "summary": "President orders prompt investigation after one train derails in collision in al-Ayyat about 50km from Cairo Seven people were killed and at least 125 injured when two trains collided on Sunday south of the Egyptian capital, Cairo, officials said. The crash occurred in al-Ayyat district in Giza province, about 50km (30 miles) south of Cairo, when a train travelling to Fayoum province crashed into the rear of a train heading to the southern province of Aswan, according to the transport ministry. Continue reading...",
-    "link": "https://www.theguardian.com/world/2026/nov/08/egypt-two-trains-deadly-collision",
-    "pubDate": "Sun, 08 Nov 2026 17:51:17 GMT",
+    "source": "NPR World",
+    "title": "U.S. envoys meet with Putin in Moscow on Ukraine talks, then see Zelenskyy in Dublin",
+    "summary": "U.S. envoys have met with Russian President Vladimir Putin in the Kremlin and with Ukrainian President Volodymyr Zelenskyy in Ireland as Washington seeks new momentum in peace efforts.",
+    "link": "https://www.npr.org/2026/11/12/nx-s1-6038809/us-envoys-meet-putin-russia-ukraine-war-talks",
+    "pubDate": "Thu, 12 Nov 2026 10:26:34 -0500",
     "keywords": [
-      "train",
-      "cairo",
-      "province",
-      "collision",
-      "trains",
-      "least",
-      "seven",
-      "al-ayyat"
+      "envoys",
+      "putin",
+      "zelenskyy",
+      "president",
+      "meet",
+      "moscow",
+      "ukraine",
+      "talks"
     ],
-    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
