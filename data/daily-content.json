@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-11-15T01:28:55.111Z",
+  "generatedAt": "2026-11-16T01:32:05.635Z",
   "reading": {
     "source": "NPR Business",
-    "title": "A negative Outlook: Microsoft scrambles to fix email outage",
-    "summary": "Early Friday, after Outlook had been down for more than 12 hours, Microsoft reported \"marginal success.\"",
-    "link": "https://www.npr.org/2026/11/12/nx-s1-6039343/outlook-down-widespread-outage-microsoft-email",
-    "pubDate": "Thu, 12 Nov 2026 20:26:24 -0500",
+    "title": "CEO Jensen Huang resigns from chip giant Nvidia",
+    "summary": "The chip giant Nvidia announced that CEO Jensen Huang was stepping down following allegations that he'd had extramarital affairs, including one with a woman suspected of being a Chinese spy.",
+    "link": "https://www.npr.org/2026/11/12/nx-s1-6038865/ceo-jensen-huang-resigns-from-chip-giant-nvidia",
+    "pubDate": "Thu, 12 Nov 2026 17:02:44 -0500",
     "keywords": [
-      "outlook",
-      "microsoft",
-      "negative",
-      "scrambles",
-      "email",
-      "outage",
-      "early",
-      "friday"
+      "jensen",
+      "huang",
+      "chip",
+      "giant",
+      "nvidia",
+      "resigns",
+      "announced",
+      "stepping"
     ]
   },
   "news": {
-    "source": "NPR World",
-    "title": "U.S. envoys meet with Putin in Moscow on Ukraine talks, then see Zelenskyy in Dublin",
-    "summary": "U.S. envoys have met with Russian President Vladimir Putin in the Kremlin and with Ukrainian President Volodymyr Zelenskyy in Ireland as Washington seeks new momentum in peace efforts.",
-    "link": "https://www.npr.org/2026/11/12/nx-s1-6038809/us-envoys-meet-putin-russia-ukraine-war-talks",
-    "pubDate": "Thu, 12 Nov 2026 10:26:34 -0500",
+    "source": "BBC World",
+    "title": "Suspected China spy linked to Nvidia's ex-boss left in 2025, Megaspeed says",
+    "summary": "The Nvidia scandal has raised questions over whether advanced AI chips ended up in China, despite US restrictions.",
+    "link": "https://www.bbc.co.uk/news/articles/cmdx1vpprk9vo?at_medium=RSS&at_campaign=rss",
+    "pubDate": "Sun, 15 Nov 2026 22:24:20 GMT",
     "keywords": [
-      "envoys",
-      "putin",
-      "zelenskyy",
-      "president",
-      "meet",
-      "moscow",
-      "ukraine",
-      "talks"
+      "china",
+      "nvidia",
+      "suspected",
+      "linked",
+      "ex-boss",
+      "left",
+      "megaspeed",
+      "says"
     ],
-    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 BBC World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
