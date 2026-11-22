@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-11-21T02:57:08.969Z",
+  "generatedAt": "2026-11-22T01:51:40.266Z",
   "reading": {
-    "source": "BBC Technology",
-    "title": "Anthropic becomes one of world's most valuable public companies in stock market debut",
-    "summary": "Anthropic is the first purely AI company to be publicly listed, creating a test for the entire industry.",
-    "link": "https://www.bbc.co.uk/news/articles/c3x29ggenz12o?at_medium=RSS&at_campaign=rss",
-    "pubDate": "Thu, 19 Nov 2026 23:33:51 GMT",
+    "source": "NASA News",
+    "title": "New NASA Seed Funding Primes Small Businesses for Innovation",
+    "summary": "Awards to small businesses around the country are addressing some of NASA’s most crucial technology needs for exploration of the Moon and Mars while fueling the U.S. space economy. NASA’s Small Business Innovation Research/Small Business Technology Transfer (SBIR/STTR) program recently selected 302 innovative projects, for a total investment of up to $171 million in seed […]",
+    "link": "https://www.nasa.gov/directorates/rtmd/new-nasa-seed-funding-primes-small-businesses-for-innovation/",
+    "pubDate": "Fri, 20 Nov 2026 20:46:14 +0000",
     "keywords": [
-      "anthropic",
-      "becomes",
-      "world",
-      "most",
-      "valuable",
-      "public",
-      "companies",
-      "stock"
+      "small",
+      "nasa",
+      "seed",
+      "businesses",
+      "innovation",
+      "technology",
+      "business",
+      "funding"
     ]
   },
   "news": {
-    "source": "The Guardian World",
-    "title": "Myanmar ruling gives new relevance to genocide convention and is ‘full of messages’ for Israel",
-    "summary": "Hailed as ‘a rare moment of justice’, judges’ decision sets out a roadmap for assessing the question of intent The international court of justice (ICJ) verdict making Myanmar the first country in history to be found guilty of committing genocide does not just deliver justice for Rohingya victims. It also gives the 1948 genocide convention new relevance in governing the actions of nation states. In their nine votes to six majority ruling, the panel of judges in The Hague set out a detailed roadmap for how the convention should be applied to real-world situations in which a government is accused of committing genocide against a whole population group, especially when it comes to assessing the question of intent. Continue reading...",
-    "link": "https://www.theguardian.com/law/2026/nov/19/myanmar-ruling-new-relevance-genocide-convention-messages-israel",
-    "pubDate": "Thu, 19 Nov 2026 17:14:55 GMT",
+    "source": "NPR World",
+    "title": "Trump touts meeting with Xi and Putin but offers few results",
+    "summary": "At a White House press conference Friday, Trump offered little in actual results of the meetings, beyond a joint statement on unity over some issues.",
+    "link": "https://www.npr.org/2026/11/20/nx-s1-6047594/trump-asia-trip-xi-putin-press-conference",
+    "pubDate": "Fri, 20 Nov 2026 10:00:00 -0500",
     "keywords": [
-      "genocide",
-      "convention",
-      "justice",
-      "myanmar",
-      "ruling",
-      "gives",
-      "relevance",
-      "judges"
+      "trump",
+      "results",
+      "touts",
+      "meeting",
+      "putin",
+      "offers",
+      "white",
+      "house"
     ],
-    "subtitleZh": "这条新闻来自 The Guardian World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
+    "subtitleZh": "这条新闻来自 NPR World。建议先听英文标题和摘要，再结合关键词复述主要信息。"
   },
   "sources": {
     "reading": [
